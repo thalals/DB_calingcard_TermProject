@@ -14,6 +14,7 @@
 </head>
 <body>
 <%
+	//이름과 번호가 입력이 안되면 다시 입력하게
 	if(request.getParameter("Name")==null || request.getParameter("PhoneNumber")==null){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -29,10 +30,12 @@
 		card.setEmail(request.getParameter("Email"));
 		card.setPosition(request.getParameter("Position"));
 		card.setCareer(request.getParameter("Career"));
-
+		
 		System.out.println("card : "+card);
+		//CardDAO클래스의 addCard()함수 사용
 		int result = cardDAO.addCard(card);
-		System.out.println(result);
+		//System.out.println(result);
+		//명함 추가 실패했을 경우
 		if (result == -1 ){
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
@@ -40,6 +43,7 @@
 			script.println("history.back()");
 			script.println("</script>");
 		}
+		//명함 추가 성공했을 경우
 		else{
 			PrintWriter script = response.getWriter();
 			script.println("<script>");

@@ -24,15 +24,29 @@ public class CardDAO {
 			//mysql 접속 url
 			String url = "jdbc:mysql://localhost:3306/detol?serverTimezone=UTC";
 			String id = "root";
-			String password ="1234";
+			String password ="akzmtlqkf12@";
 			Class.forName("com.mysql.jdbc.Driver");	//mysql 드라이버 찾기
-			conn = DriverManager.getConnection(url,id,password); //conn객체 안에 접속정보
-			
+			conn = DriverManager.getConnection(url,"root","akzmtlqkf12@"); //conn객체 안에 접속정보
 		}catch(Exception e) {
 			e.printStackTrace(); //오류 출력
 		}
 	}
-	
+	//행 갯수
+	public int Count() {
+		String sql = "SELECT COUNT(*) FROM card";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);	//sql 명령어를 실행하기(담기?) 위한 객체
+			rs = pstmt.executeQuery();	//쿼리 실행
+			//결과가 있을때
+			if(rs.next()) {
+				int num = rs.getInt(1);
+				return num;
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 	
 	//저장일자
 	public String getDate() {
@@ -50,12 +64,12 @@ public class CardDAO {
 		return "오류 ";
 	}
 	
-
+	
 	//카드 생성
 	public int addCard(Card card) {
 //		Card cd = new Card();
-		String sql = "INSERT INTO Card (UserNumber, OrgNumber, Name, PhoneNumber, Team, Position, Email, Career) VALUES (1,1,?,?,?,?,?,?)";
-		System.out.println("넘어왔는지 확인1번 : " +card.getName() + card.getPosition());
+		String sql = "INSERT INTO Card (Name, PhoneNumber, Team, Position, Email, Career) VALUES (?,?,?,?,?,?)";
+		//System.out.println("넘어왔는지 확인1번 : " +card.getName() + card.getPosition());
 
 		try {
 			System.out.println("넘어왔는지 확인  2번 : " +card.getName() + card.getPosition());
@@ -63,15 +77,14 @@ public class CardDAO {
 			PreparedStatement pstmt = conn.prepareStatement(sql);	//sql 명령어를 실행하기(담기?) 위한 객체
 			System.out.println("넘어왔는지 확인  3번 : " +card.getName() + card.getPosition());
 
-			pstmt.setString(4, card.getName());
-			pstmt.setString(5, card.getPhoneNumber());
-			pstmt.setString(6, card.getTeam());
-			pstmt.setString(7, card.getPosition());
-			pstmt.setString(8, card.getEmail());
-			pstmt.setString(9, card.getCareer());
+			pstmt.setString(1, card.getName());
+			pstmt.setString(2, card.getPhoneNumber());
+			pstmt.setString(3, card.getTeam());
+			pstmt.setString(4, card.getPosition());
+			pstmt.setString(5, card.getEmail());
+			pstmt.setString(6, card.getCareer());
 
 //			rs = pstmt.executeQuery();
-			conn.close();
 			return pstmt.executeUpdate();
 			
 		}catch(Exception e) {
