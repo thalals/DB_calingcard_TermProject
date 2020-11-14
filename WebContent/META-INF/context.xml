@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context>
+	<Resource name="jdbc/detol"
+	auth="Container"
+	type="javax.sql.DataSource"
+	username="root"
+	password="akzmtlqkf12@"
+	driverClassName="com.mysql.jdbc.Driver"
+	url="jdbc:mysql://localhost:3306/detol?serverTimezone=UTC"
+	maxActive="500"
+	maxIdle="100"/>
+</Context>
