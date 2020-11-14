@@ -78,6 +78,8 @@
 						<table>
 							<tr>
 								<td><%=rs.getString("Name") %></td>
+								<td width = 100px></td>
+								<td><a href="deleteCard.jsp?CardNumber=<%=rs.getInt("CardNumber") %>">삭제</a></td>
 							</tr>
 						</table>
 					<%	} %>
