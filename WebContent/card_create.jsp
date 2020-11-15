@@ -7,7 +7,7 @@
 <title>명함 추가</title>
 </head>
 <body>
-<form method="post" action="card_createAction.jsp">
+<form method="post" action="card_create">
 <p> 이름 : </p>
 <input type="text" class="form-control" placehorder="성명" name="Name" maxlength="30">
 <p> 핸드폰 번호 : </p>

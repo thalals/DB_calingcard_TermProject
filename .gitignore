@@ -138,5 +138,14 @@ hadoop-tools/hadoop-openstack/src/test/resources/contract-test-options.xml
 
 
 Servers
+xml
 .xml
+mysql
+.mysql
+.metadata
+
+Model2Board
+
+Servers
+
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,database,java,code-java,java-web

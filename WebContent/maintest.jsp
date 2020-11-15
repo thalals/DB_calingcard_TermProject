@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="card.CardDAO" %>
+<%@ page import="dao.CardDAO" %>
 <%@ page import="java.io.PrintWriter" %>
 <% request.setCharacterEncoding("UTF-8"); %>
 <%@ page import="java.sql.*" %>
 <%@ page import="javax.sql.*" %>
 <%@ page import="javax.naming.*" %>
-<jsp:useBean id="card" class="card.Card" scope="page" />
+<jsp:useBean id="card" class="vo.Card" scope="page" />
 <jsp:setProperty name="card" property="*" />
 <!DOCTYPE html>
 <html>
