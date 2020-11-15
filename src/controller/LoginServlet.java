@@ -27,32 +27,31 @@ public class LoginServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
     
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String id=request.getParameter("UserID");
-		String passwd=request.getParameter("UserPW");
-		LoginService loginService=new LoginService();
-		Member loginMember=loginService.getLoginMember(id,passwd);
 		
-		// 로그인 성공했을떄
-		if(loginMember != null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("UserID",id);
-			response.sendRedirect("maintest.jsp");
-		}
-		else {
-			response.setContentType("text/html;charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert('로그인실패')");
-			out.println("history.back()");
-			out.println("</script>");
-		}
+			String id=request.getParameter("UserID");
+			String passwd=request.getParameter("UserPW");
+			LoginService loginService=new LoginService();
+			Member loginMember=loginService.getLoginMember(id,passwd);
+			
+			// 로그인 성공했을떄
+			if(loginMember != null) {
+				HttpSession session=request.getSession();
+				session.setAttribute("id", id);
+				response.sendRedirect("maintest.jsp");
+			}
+			else {
+				response.setContentType("text/html;charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('로그인실패')");
+				out.println("history.back()");
+				out.println("</script>");
+			}
 	
 	}
 

@@ -58,6 +58,7 @@
 					<div class="form-group">
 						<input type="password" class="form-control" placeholder="비밀번호" name="UserPW" id="UserPW"maxlength="20">
 					</div>
+					
 					<input type="submit" class="btn btn-primary form-control" value="로그인">	
 				</form>
 				</section>	
