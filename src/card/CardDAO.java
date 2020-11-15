@@ -2,42 +2,49 @@ package card;
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.sql.DataSource;
 import java.sql.*;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import javax.sql.DataSource;
+import javax.*;
+import javax.naming.Context;
+import javax.naming.InitialContext;
 
 public class CardDAO {
 	
-	private Connection conn;	//디비 접근
-//	private PreparedStatement pstmt;	//sql 명령어를 실행하기(담기?) 위한 객체
-	private ResultSet rs;	//결과값 담기
+	private Connection conn;	//�뵒鍮� �젒洹�
+	private PreparedStatement pstmt;	//sql 紐낅졊�뼱瑜� �떎�뻾�븯湲�(�떞湲�?) �쐞�븳 媛앹껜
+	private ResultSet rs;	//寃곌낵媛� �떞湲�
 	
-	//생성자 - 자동 실행
+	//�깮�꽦�옄 - �옄�룞 �떎�뻾
 	public CardDAO() {
-//		 DataSource dataSource = null;
+		Connection con=null;
 
 
 		try {
-			//mysql 접속 url
-			String url = "jdbc:mysql://localhost:3306/detol?serverTimezone=UTC";
-			String id = "root";
-			String password ="akzmtlqkf12@";
-			Class.forName("com.mysql.jdbc.Driver");	//mysql 드라이버 찾기
-			conn = DriverManager.getConnection(url,"root","akzmtlqkf12@"); //conn객체 안에 접속정보
+			//mysql �젒�냽 url
+//			String url = "jdbc:mysql://localhost:3306/detol?serverTimezone=UTC";
+//			String id = "root";
+//			String password ="1234";
+//			Class.forName("com.mysql.cj.jdbc.Driver");	//mysql �뱶�씪�씠踰� 李얘린
+//			conn = DriverManager.getConnection(url,"root","1234"); //conn媛앹껜 �븞�뿉 �젒�냽�젙蹂�
+			
+			Context initCtx=new InitialContext();
+
+			DataSource ds=(DataSource)initCtx.lookup("java:comp/env/jdbc/detol");
+			con=ds.getConnection();
+			con.setAutoCommit(false);
+			System.out.println("connect success");
 		}catch(Exception e) {
-			e.printStackTrace(); //오류 출력
+			e.printStackTrace(); //�삤瑜� 異쒕젰
 		}
 	}
-	//행 갯수
+	//�뻾 媛��닔
 	public int Count() {
 		String sql = "SELECT COUNT(*) FROM card";
 		try {
-			PreparedStatement pstmt = conn.prepareStatement(sql);	//sql 명령어를 실행하기(담기?) 위한 객체
-			rs = pstmt.executeQuery();	//쿼리 실행
-			//결과가 있을때
+			PreparedStatement pstmt = conn.prepareStatement(sql);	//sql 紐낅졊�뼱瑜� �떎�뻾�븯湲�(�떞湲�?) �쐞�븳 媛앹껜
+			rs = pstmt.executeQuery();	//荑쇰━ �떎�뻾
+			//寃곌낵媛� �엳�쓣�븣
 			if(rs.next()) {
 				int num = rs.getInt(1);
 				return num;
@@ -48,34 +55,34 @@ public class CardDAO {
 		return 0;
 	}
 	
-	//저장일자
+	//���옣�씪�옄
 	public String getDate() {
 		String sql = "SELECT NOW()";
 		try {
-			PreparedStatement pstmt = conn.prepareStatement(sql);	//sql 명령어를 실행하기(담기?) 위한 객체
-			rs = pstmt.executeQuery();	//쿼리 실행
-			//결과가 있을때
+			PreparedStatement pstmt = conn.prepareStatement(sql);	//sql 紐낅졊�뼱瑜� �떎�뻾�븯湲�(�떞湲�?) �쐞�븳 媛앹껜
+			rs = pstmt.executeQuery();	//荑쇰━ �떎�뻾
+			//寃곌낵媛� �엳�쓣�븣
 			if(rs.next()) {
 				return rs.getNString(1);
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return "오류 ";
+		return "�삤瑜� ";
 	}
 	
 	
-	//카드 생성
+	//移대뱶 �깮�꽦
 	public int addCard(Card card) {
 //		Card cd = new Card();
 		String sql = "INSERT INTO Card (Name, PhoneNumber, Team, Position, Email, Career) VALUES (?,?,?,?,?,?)";
-		//System.out.println("넘어왔는지 확인1번 : " +card.getName() + card.getPosition());
+		//System.out.println("�꽆�뼱�솕�뒗吏� �솗�씤1踰� : " +card.getName() + card.getPosition());
 
 		try {
-			System.out.println("넘어왔는지 확인  2번 : " +card.getName() + card.getPosition());
+			System.out.println("�꽆�뼱�솕�뒗吏� �솗�씤  2踰� : " +card.getName() + card.getPosition());
 
-			PreparedStatement pstmt = conn.prepareStatement(sql);	//sql 명령어를 실행하기(담기?) 위한 객체
-			System.out.println("넘어왔는지 확인  3번 : " +card.getName() + card.getPosition());
+			PreparedStatement pstmt = conn.prepareStatement(sql);	//sql 紐낅졊�뼱瑜� �떎�뻾�븯湲�(�떞湲�?) �쐞�븳 媛앹껜
+			System.out.println("�꽆�뼱�솕�뒗吏� �솗�씤  3踰� : " +card.getName() + card.getPosition());
 
 			pstmt.setString(1, card.getName());
 			pstmt.setString(2, card.getPhoneNumber());
@@ -97,14 +104,14 @@ public class CardDAO {
 		String sql = "SELECT * FROM Card;";
 		ArrayList<Card> list = new ArrayList<Card>();
 		try {
-			PreparedStatement pstmt = conn.prepareStatement(sql);	//sql 명령어를 실행하기(담기?) 위한 객체
-			rs = pstmt.executeQuery();	//쿼리 실행
-			System.out.println("뭐라도 리스트 출력해봐 : "+rs.getString(4));
+			PreparedStatement pstmt = conn.prepareStatement(sql);	//sql 紐낅졊�뼱瑜� �떎�뻾�븯湲�(�떞湲�?) �쐞�븳 媛앹껜
+			rs = pstmt.executeQuery();	//荑쇰━ �떎�뻾
+			System.out.println("萸먮씪�룄 由ъ뒪�듃 異쒕젰�빐遊� : "+rs.getString(4));
 
-			//결과가 있을때
+			//寃곌낵媛� �엳�쓣�븣
 			if(rs.next()) {
 				Card card = new Card();
-				System.out.println("뭐라도 리스트 출력해봐 : "+rs.getString(4));
+				System.out.println("萸먮씪�룄 由ъ뒪�듃 異쒕젰�빐遊� : "+rs.getString(4));
 				card.setCardNumber(rs.getInt(1));
 				card.setUserNumber(rs.getInt(2));
 				card.setOrgNumber(rs.getInt(3));
@@ -124,20 +131,20 @@ public class CardDAO {
 	}
 	
 	
-	//게시글 번호???
+	//寃뚯떆湲� 踰덊샇???
 //	public String getNext() {
 //		String sql = "SELECT CardNumber FROM ";
 //		try {
-//			PreparedStatement pstmt = conn.prepareStatement(sql);	//sql 명령어를 실행하기(담기?) 위한 객체
-//			rs = pstmt.executeQuery();	//쿼리 실행
-//			//결과가 있을때
+//			PreparedStatement pstmt = conn.prepareStatement(sql);	//sql 紐낅졊�뼱瑜� �떎�뻾�븯湲�(�떞湲�?) �쐞�븳 媛앹껜
+//			rs = pstmt.executeQuery();	//荑쇰━ �떎�뻾
+//			//寃곌낵媛� �엳�쓣�븣
 //			if(rs.next()) {
 //				return rs.getNString(1);
 //			}
 //		}catch(Exception e) {
 //			e.printStackTrace();
 //		}
-//		return "오류 ";
+//		return "�삤瑜� ";
 //	}
 	
 }

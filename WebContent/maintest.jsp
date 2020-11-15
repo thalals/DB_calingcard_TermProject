@@ -68,9 +68,9 @@
 							//mysql 접속 url
 							String url = "jdbc:mysql://localhost:3306/detol?serverTimezone=UTC";
 							String id = "root";
-							String password ="akzmtlqkf12@";
-							Class.forName("com.mysql.jdbc.Driver");	//mysql 드라이버 찾기
-							conn = DriverManager.getConnection(url,"root","akzmtlqkf12@"); //conn객체 안에 접속정보
+							String password ="1234";
+							Class.forName("com.mysql.cj.jdbc.Driver");	//mysql 드라이버 찾기
+							conn = DriverManager.getConnection(url,"root","1234"); //conn객체 안에 접속정보
 							ps=conn.prepareStatement(sql);
 							rs=ps.executeQuery();
 					%>

@@ -17,7 +17,8 @@
 	ArrayList<Card> list = cardDAO.getList();
 	out.println("여기는 나오냐 " +list.size() );
 	for(int i =0;i<list.size();i++){
-		
+		out.println("여기는 나오냐 " +list.size() );
+
 %>
 		카드번호 : <%=list.get(i).getCardNumber() %><br>	
 		유저번호 : <%=list.get(i).getUserNumber() %>	<br>

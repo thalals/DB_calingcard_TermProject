@@ -16,9 +16,9 @@ public class UserDAO {
 			//dbURL입력할때 로컬호스트:~~/디비이름? 써줘야함
 			String jdbcURL = "jdbc:mysql://localhost:3306/detol?serverTimezone=UTC";
 			String dbID = "root";
-			String dbPassword = "akzmtlqkf12@";
+			String dbPassword = "1234";
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection(jdbcURL, "root", "akzmtlqkf12@");
+			conn = DriverManager.getConnection(jdbcURL, "root", "1234");
 		}	catch(Exception e) {
 			e.printStackTrace(); 
 		}
