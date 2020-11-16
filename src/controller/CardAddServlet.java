@@ -41,12 +41,14 @@ public class CardAddServlet extends HttpServlet {
 
 		//버튼
 		String button = request.getParameter("btn");
+		System.out.println("버튼버튼버튼 : "+button);
 		
-		if(button.contentEquals("삭제")) {
+		if(button.equals("삭제")) {
 			String id=request.getParameter("id"); // 삭제할 ID를 받아옴
             cardDAO.delCard(id); // DAO의  delMember
             request.setAttribute("msg", "deleted"); // 삭제 완료 메세지 전달
             
+            System.out.println("a");
             response.sendRedirect("maintest2.jsp");
 		}
 		

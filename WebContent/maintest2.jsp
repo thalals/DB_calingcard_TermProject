@@ -59,7 +59,8 @@
 		<div class="clo-lg-4"></div>
 		<div class="clo-lg-4">
 			<div class="jumbotron" style="padding-top: 20px;">
-				<form method="post" action="">
+			
+				<form action = "card_create" method = "post" >
 					<h3 style="text-align: center;">명함 한눈에 보기</h3>
 					
 					<% 
@@ -69,7 +70,7 @@
 						
 						for(Card a : card_list){
 							%>
-							<form action = "card_create" method = "post" >
+							
 							<tr>
 							<td><%=a.getName() %></td>
 							<td><%=a.getPhoneNumber() %></td>
@@ -79,12 +80,12 @@
 							</tr>
 							
 							<td>
-								<input type = "submit" name = "btn" value = "삭제">
-								<input type = "hidden" name = "id" value ="<%=a.getCardNumber() %>">
-							
+ 								<input type = "hidden" name = "id" value ="<%=a.getCardNumber() %>">
+								 <input type = "submit" name = "btn" value = "삭제">
+								<a href="card_create?id='<%=a.getCardNumber()%>'&&btn='삭제'"></a>
 							</td>
 							<br>
-							</form>
+							
 							
 						<% 
 						count++;

@@ -43,7 +43,8 @@ public class CardDAO {
 			
 			while(rs.next()) {
 				Card card = new Card();
-				System.out.println("뭐라도 리스트 출력해봐 : "+rs.getString(4));
+//				System.out.println("뭐라도 리스트 출력해봐 : "+rs.getString(4));
+				System.out.println("ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
 				card.setCardNumber(rs.getInt(1));
 				card.setUserID(rs.getString(2));
 				card.setOrgNumber(rs.getInt(3));
@@ -111,8 +112,8 @@ public class CardDAO {
 		PreparedStatement pstmt=null;
 		
         try {
-           
-            pstmt=conn.prepareStatement("delete from t_member where id=?");
+           System.out.println("여기로 오냐??");
+            pstmt=conn.prepareStatement("delete from card where id=?");
 			
            
             pstmt.setString(1, id);
@@ -122,6 +123,14 @@ public class CardDAO {
         catch (Exception e) {
             e.printStackTrace();
         }
+        finally {
+			try {
+				rs.close();
+				pstmt.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
     }
 	
 	public int Count() {
