@@ -3,6 +3,8 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,18 +44,56 @@ public class CardAddServlet extends HttpServlet {
 
 		//ï¿½ï¿½Æ°
 		String button = request.getParameter("btn");
-		System.out.println("ï¿½ï¿½Æ°ï¿½ï¿½Æ°ï¿½ï¿½Æ° : "+button);
+		System.out.println("¹öÆ°ÀÌ¸§: "+button);
 		
-		if(button.equals("ï¿½ï¿½ï¿½ï¿½")) {
+		if(button.equals("»èÁ¦")) {
 			String id=request.getParameter("id"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ IDï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½
+			System.out.println("id:"+id);
             cardDAO.delCard(id); // DAOï¿½ï¿½  delMember
             request.setAttribute("msg", "deleted"); // ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             
             System.out.println("a");
             response.sendRedirect("maintest2.jsp");
 		}
+		else if(button.equals("¼öÁ¤")) {
+			String id=request.getParameter("id");  
+			
+			card = cardDAO.selectCard(id);
+			ServletContext context=getServletContext();
+			RequestDispatcher dispatcher=context.getRequestDispatcher("/updateCard.jsp");
+			
+			System.out.println("¼öÁ¤¼öÁ¤");
+			request.setAttribute("card", card);
+			request.setAttribute("id", id);
+			
+			dispatcher.forward(request,response);
+
+		}
+		else if(button.equals("Ä«µå¼öÁ¤")) {
+			card.setName(request.getParameter("Name"));
+			card.setPhoneNumber(request.getParameter("PhoneNumber"));
+			card.setTeam(request.getParameter("Team"));
+			card.setPosition(request.getParameter("Position"));
+			card.setEmail(request.getParameter("Email"));
+			card.setCareer(request.getParameter("Carrer"));
+			
+			cardDAO.upCard(card);
+	
 		
-		else {
+			if (cardDAO != null) {
+				response.sendRedirect("maintest2.jsp");
+			}
+			else {
+				response.setContentType("text/html;charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('·Î±×ÀÎ ½ÇÆÐ')");
+				out.println("history.back()");
+				out.println("</script>");
+			}
+		}
+		
+		else if(button.equals("Ä«µåÃß°¡")) {
 			card.setName(request.getParameter("Name"));
 			card.setPhoneNumber(request.getParameter("PhoneNumber"));
 			card.setTeam(request.getParameter("Team"));
@@ -71,28 +111,10 @@ public class CardAddServlet extends HttpServlet {
 				response.setContentType("text/html;charset=UTF-8");
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
-				out.println("alert('ï¿½Î±ï¿½ï¿½Î½ï¿½ï¿½ï¿½')");
+				out.println("alert('·Î±×ÀÎ ½ÇÆÐ')");
 				out.println("history.back()");
 				out.println("</script>");
 			}
 		}
 	}
-	
-    private void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	String nextPage = null;
-        request.setCharacterEncoding("utf-8");
-        response.setContentType("text/html;charset=utf-8");
-        String action = request.getPathInfo();
-        System.out.println("action:" + action);
-        
-		CardDAO cardDAO = new CardDAO();
-
-        if(action.equals("/delete.do")){
-            String id=request.getParameter("id"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ IDï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½
-            cardDAO.delCard(id); // DAOï¿½ï¿½  delMember
-            request.setAttribute("msg", "deleted"); // ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-            nextPage="/members/listMembers.do";
-       }
-    }
-
 }

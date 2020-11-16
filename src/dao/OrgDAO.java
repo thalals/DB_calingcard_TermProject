@@ -18,7 +18,7 @@ public class OrgDAO {
 	private static ResultSet rs;	
 	private static OrgDAO orgDAO;
 	
-	//DB 연동
+	//DB �뿰�룞
 	public static void getOrg() {	
 		try {
 			Context initCtx=new InitialContext();
@@ -32,8 +32,10 @@ public class OrgDAO {
 	public static void addOrganization(Org org) {
 		getOrg();
 		PreparedStatement pstmt=null;
-		//request.setCharacterEncoding("utf-8");
+		
+//		request.setCharacterEncoding("utf-8");
 		try {			
+			System.out.println("회사 생성 되나영?");
 			pstmt=conn.prepareStatement("INSERT INTO organization(OrgName, OrgAddress, OrgZipCode, Orgemail, Orgfax) VALUES (?,?,?,?,?)");
 				
 			pstmt.setString(1, org.getOrgName());
@@ -42,8 +44,9 @@ public class OrgDAO {
 			pstmt.setString(4, org.getOrgemail());
 			pstmt.setString(5, org.getOrgfax());
 			
-			pstmt.executeUpdate();
-			
+			int a = pstmt.executeUpdate();
+			System.out.println("회사 생성되는 행 : "+a);
+
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

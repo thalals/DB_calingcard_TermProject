@@ -9,8 +9,8 @@
 <body>
 <form method="post" action="card_create">
 <%
-	int x=(int)request.getAttribute("Org_Number");
-	System.out.println(x);
+	/*int x=(int)request.getAttribute("Org_Number");
+	System.out.println(x);*/
 %>
 <p> 이름 : </p>
 <input type="text" class="form-control" placehorder="성명" name="Name" maxlength="30">
@@ -24,7 +24,7 @@
 <input type="text" class="form-control" placehorder="없으면 입력하지 않으셔도 됩니다." name="Email" maxlength="30">
 <p> 경력 : </p>
 <input type="text" class="form-control" placehorder="없으면 입력하지 않으셔도 됩니다." name="Career" maxlength="30">
-<input type="submit" value="추가">
+<input type="submit" class="btn btn-primary form-control" name="btn" value="카드추가">	
 </form>
 </body>
 </html>

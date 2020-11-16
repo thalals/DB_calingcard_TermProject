@@ -18,7 +18,7 @@
 	<input type="text" class="form-control" placehorder="email" name="Orgemail" maxlength="30">
 	<p> 단체 팩스번호 : </p>
 	<input type="text" class="form-control" placehorder="fax" name="Orgfax" maxlength="30">
-	<p> 경력 : </p>
+	
 	<input type="submit" name="btn" value="생성">
 </form>
 </body>

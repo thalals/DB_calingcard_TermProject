@@ -29,7 +29,7 @@
 					for(Org a:orgname_list){
 						
 				%>
-					<option value="<%=a.getOrgName() %>"><%=a.getOrgName() %></option>
+					<option  value="<%=a.getOrg_Number() %>"><%=a.getOrgName() %></option>
 				<%
 					}
 				%>

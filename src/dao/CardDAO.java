@@ -29,7 +29,48 @@ public class CardDAO {
 			e.printStackTrace();
 		}
 	}
-	
+	//카드 컬럼 선택
+	public static Card selectCard(String id) {
+		getCard();
+		PreparedStatement pstmt=null;
+		Card card = new Card();
+		
+		
+
+		try {
+			pstmt=conn.prepareStatement("select * from card where CardNumber = ?");
+			pstmt.setNString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				card.setCardNumber(rs.getInt(1));
+				card.setUserID(rs.getString(2));
+				card.setOrgNumber(rs.getInt(3));
+				card.setName(rs.getString(4));
+				card.setPhoneNumber(rs.getString(5));
+				card.setTeam(rs.getString(6));
+				card.setPosition(rs.getString(7));
+				card.setEmail(rs.getString(8));
+				card.setCareer(rs.getString(9));
+				card.setSaveDate(rs.getString(10));
+				
+			}
+			System.out.println("카드 선택 확인 : " + card.getName());
+			return card;
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				rs.close();
+				pstmt.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return card;
+	}
 	//카드 리스트 가져오기
 	public static ArrayList<Card> getCardlist() {
 		getCard();
@@ -43,8 +84,7 @@ public class CardDAO {
 			
 			while(rs.next()) {
 				Card card = new Card();
-//				System.out.println("뭐라도 리스트 출력해봐 : "+rs.getString(4));
-				System.out.println("ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ");
+
 				card.setCardNumber(rs.getInt(1));
 				card.setUserID(rs.getString(2));
 				card.setOrgNumber(rs.getInt(3));
@@ -113,7 +153,7 @@ public class CardDAO {
 		
         try {
            System.out.println("여기로 오냐??");
-            pstmt=conn.prepareStatement("delete from card where id=?");
+            pstmt=conn.prepareStatement("delete from card where CardNumber=?");
 			
            
             pstmt.setString(1, id);
@@ -133,6 +173,48 @@ public class CardDAO {
 		}
     }
 	
+	//카드 수정
+	public void upCard(Card card) {
+		getCard();
+		PreparedStatement pstmt=null;
+		
+		StringBuffer query = new StringBuffer();
+		query.append("UPDATE card SET Name = ?, ");
+		query.append("PhoneNumber = ?, ");
+		query.append("Team = ? ");
+		query.append("Position = ? ");
+		query.append("Email = ? ");
+		query.append("Career = ? ");
+	
+		query.append("WHERE CardNumber = ?");
+		
+		
+		try {
+			pstmt=conn.prepareStatement(query.toString());
+			
+			pstmt.setString(1, card.getName());
+			pstmt.setString(2, card.getPhoneNumber());
+			pstmt.setString(3, card.getTeam());
+			pstmt.setString(4, card.getPosition());
+			pstmt.setString(5, card.getEmail());
+			pstmt.setString(6, card.getCareer());
+			pstmt.setInt(7, card.getCardNumber());
+	
+			int a = pstmt.executeUpdate();	//생성되면 0이상의 값 반환
+			
+			System.out.println("수정됬나요 ~~ 행이 몆개인가여 : "+a);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				rs.close();
+				pstmt.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	public int Count() {
 		String sql = "SELECT COUNT(*) FROM card";
 		try {

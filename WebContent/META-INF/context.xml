@@ -5,7 +5,7 @@
 	auth="Container"
 	type="javax.sql.DataSource"
 	username="root"
-	password="akzmtlqkf12@"
+	password="1234"
 	driverClassName="com.mysql.jdbc.Driver"
 	url="jdbc:mysql://localhost:3306/detol?serverTimezone=UTC"
 	maxActive="500"

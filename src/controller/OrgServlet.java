@@ -54,6 +54,7 @@ public class OrgServlet extends HttpServlet {
 			if (orgDAO != null) {
 				response.sendRedirect("orgselect.jsp");
 			}
+			
 			else {
 				response.setContentType("text/html;charset=UTF-8");
 				PrintWriter out1 = response.getWriter();
@@ -63,14 +64,23 @@ public class OrgServlet extends HttpServlet {
 				out1.println("</script>");
 			}
 		}else if("추가".equals(button)) {
+			
+			System.out.println("회사 추가");
+			
 			response.sendRedirect("orgcreate.jsp");
-			System.out.println("3");
-		}else if("다음".equals(button)) {
-			System.out.println("4");
+			
+		}
+		else if("다음".equals(button)) {
+			System.out.println("다음");
 			OrgDAO orgDAO = new OrgDAO();
 			String name=request.getParameter("choice");
+			
 			int num=orgDAO.getOrgN(name);
 			request.setAttribute("Org_Number", num);
+			
+			response.setContentType("text/html; utf-8");
+			request.setCharacterEncoding("utf-8"); 
+
 			
 			ServletContext context=getServletContext();
 			RequestDispatcher dispatcher=context.getRequestDispatcher("/card_create.jsp");
