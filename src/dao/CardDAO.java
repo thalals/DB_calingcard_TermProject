@@ -30,6 +30,49 @@ public class CardDAO {
 		}
 	}
 	
+	//카드 리스트 가져오기
+	public static ArrayList<Card> getCardlist() {
+		getCard();
+		PreparedStatement pstmt=null;
+		ArrayList<Card> list = new ArrayList<Card>();
+
+		try {
+			pstmt=conn.prepareStatement("select * from card");
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Card card = new Card();
+				System.out.println("뭐라도 리스트 출력해봐 : "+rs.getString(4));
+				card.setCardNumber(rs.getInt(1));
+				card.setUserID(rs.getString(2));
+				card.setOrgNumber(rs.getInt(3));
+				card.setName(rs.getString(4));
+				card.setPhoneNumber(rs.getString(5));
+				card.setTeam(rs.getString(6));
+				card.setPosition(rs.getString(7));
+				card.setEmail(rs.getString(8));
+				card.setCareer(rs.getString(9));
+				card.setSaveDate(rs.getString(10));
+				list.add(card);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				rs.close();
+				pstmt.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return list;
+	}
+	
+	//카드 추가
 	public static void addCard(Card card) {
 		getCard();
 		PreparedStatement pstmt=null;
@@ -62,6 +105,24 @@ public class CardDAO {
 		
 	}
 	
+	//삭제
+	public void delCard(String id) {
+		getCard();
+		PreparedStatement pstmt=null;
+		
+        try {
+           
+            pstmt=conn.prepareStatement("delete from t_member where id=?");
+			
+           
+            pstmt.setString(1, id);
+            int a = pstmt.executeUpdate();
+            System.out.println("삭제된 행 수: " + a);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 	
 	public int Count() {
 		String sql = "SELECT COUNT(*) FROM card";
@@ -92,37 +153,5 @@ public class CardDAO {
 		}
 		return "�삤瑜� ";
 	}
-	
-	
-	
-	public ArrayList<Card> getList(){
-		String sql = "SELECT * FROM Card;";
-		ArrayList<Card> list = new ArrayList<Card>();
-		try {
-			PreparedStatement pstmt = conn.prepareStatement(sql);	
-			rs = pstmt.executeQuery();	
-			System.out.println("萸먮씪�룄 由ъ뒪�듃 異쒕젰�빐遊� : "+rs.getString(4));
-
-			if(rs.next()) {
-				Card card = new Card();
-				System.out.println("萸먮씪�룄 由ъ뒪�듃 異쒕젰�빐遊� : "+rs.getString(4));
-				card.setCardNumber(rs.getInt(1));
-				card.setUserID(rs.getInt(2));
-				card.setOrgNumber(rs.getInt(3));
-				card.setName(rs.getString(4));
-				card.setPhoneNumber(rs.getString(5));
-				card.setTeam(rs.getString(6));
-				card.setPosition(rs.getString(7));
-				card.setEmail(rs.getString(8));
-				card.setCareer(rs.getString(9));
-				card.setSaveDate(rs.getString(10));
-				list.add(card);
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		return list;
-	}
-	
 
 }

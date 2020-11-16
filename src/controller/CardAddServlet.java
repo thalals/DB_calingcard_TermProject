@@ -37,38 +37,59 @@ public class CardAddServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		Card card = new Card();
-		
-		card.setName(request.getParameter("Name"));
-		card.setPhoneNumber(request.getParameter("PhoneNumber"));
-		card.setTeam(request.getParameter("Team"));
-		card.setPosition(request.getParameter("Position"));
-		card.setEmail(request.getParameter("Email"));
-		card.setCareer(request.getParameter("Carrer"));
-		
 		CardDAO cardDAO = new CardDAO();
-		cardDAO.addCard(card);
-//		String name = request.getParameter("Name");
-//		String phonenumber = request.getParameter("PhoneNumber");
-//		String team = request.getParameter("Team");
-//		String position = request.getParameter("Position");
-//		String email = request.getParameter("Email");
-//		String carrer = request.getParameter("Carrer");
-//		
-//		CardCreateService cardcreateService = new CardCreateService();
+
+		//버튼
+		String button = request.getParameter("btn");
 		
-//		Card createCard = CardCreateService.getCard(name,phonenumber,team, position, email, carrer);
-	
-		if (cardDAO != null) {
-			response.sendRedirect("maintest.jsp");
+		if(button.contentEquals("삭제")) {
+			String id=request.getParameter("id"); // 삭제할 ID를 받아옴
+            cardDAO.delCard(id); // DAO의  delMember
+            request.setAttribute("msg", "deleted"); // 삭제 완료 메세지 전달
+            
+            response.sendRedirect("maintest2.jsp");
 		}
+		
 		else {
-			response.setContentType("text/html;charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>");
-			out.println("alert('로그인실패')");
-			out.println("history.back()");
-			out.println("</script>");
+			card.setName(request.getParameter("Name"));
+			card.setPhoneNumber(request.getParameter("PhoneNumber"));
+			card.setTeam(request.getParameter("Team"));
+			card.setPosition(request.getParameter("Position"));
+			card.setEmail(request.getParameter("Email"));
+			card.setCareer(request.getParameter("Carrer"));
+			
+			cardDAO.addCard(card);
+	
+		
+			if (cardDAO != null) {
+				response.sendRedirect("maintest2.jsp");
+			}
+			else {
+				response.setContentType("text/html;charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('로그인실패')");
+				out.println("history.back()");
+				out.println("</script>");
+			}
 		}
 	}
+	
+    private void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	String nextPage = null;
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
+        String action = request.getPathInfo();
+        System.out.println("action:" + action);
+        
+		CardDAO cardDAO = new CardDAO();
+
+        if(action.equals("/delete.do")){
+            String id=request.getParameter("id"); // 삭제할 ID를 받아옴
+            cardDAO.delCard(id); // DAO의  delMember
+            request.setAttribute("msg", "deleted"); // 삭제 완료 메세지 전달
+            nextPage="/members/listMembers.do";
+       }
+    }
 
 }

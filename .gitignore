@@ -140,6 +140,7 @@ hadoop-tools/hadoop-openstack/src/test/resources/contract-test-options.xml
 Servers
 xml
 .xml
+context.xml
 mysql
 .mysql
 .metadata
