@@ -1,11 +1,12 @@
-package card;
+package vo;
 
 import java.sql.Timestamp;
 import java.util.Date;
 
 public class Card {
+	
 	private int CardNumber;
-	private int UserNumber;
+	private String UserID;
 	private int OrgNumber;
 	private String Name;
 	private String PhoneNumber;
@@ -14,18 +15,17 @@ public class Card {
 	private String Email;
 	private String Career;
 	private String SaveDate;
-	
 	public int getCardNumber() {
 		return CardNumber;
 	}
 	public void setCardNumber(int cardNumber) {
 		CardNumber = cardNumber;
 	}
-	public int getUserNumber() {
-		return UserNumber;
+	public String getUserID() {
+		return UserID;
 	}
-	public void setUserNumber(int userNumber) {
-		UserNumber = userNumber;
+	public void setUserID(int UserID) {
+		UserID = UserID;
 	}
 	public int getOrgNumber() {
 		return OrgNumber;
@@ -75,5 +75,6 @@ public class Card {
 	public void setSaveDate(String saveDate) {
 		SaveDate = saveDate;
 	}
+	
 	
 }
