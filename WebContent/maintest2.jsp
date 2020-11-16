@@ -100,8 +100,9 @@
 					%>
 					 
 					
-					
-					<input type="submit" class="btn btn-primary form-control" value="명함 생성">	
+				</form>
+				<form action="org_info" method="POST">
+					<input type="submit" class="btn btn-primary form-control" name="btn" value="명함 생성">	
 				</form>	
 			</div>
 		</div>

@@ -36,17 +36,18 @@ public class CardAddServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		
+		
 		Card card = new Card();
 		CardDAO cardDAO = new CardDAO();
 
-		//¹öÆ°
+		//ï¿½ï¿½Æ°
 		String button = request.getParameter("btn");
-		System.out.println("¹öÆ°¹öÆ°¹öÆ° : "+button);
+		System.out.println("ï¿½ï¿½Æ°ï¿½ï¿½Æ°ï¿½ï¿½Æ° : "+button);
 		
-		if(button.equals("»èÁ¦")) {
-			String id=request.getParameter("id"); // »èÁ¦ÇÒ ID¸¦ ¹Þ¾Æ¿È
-            cardDAO.delCard(id); // DAOÀÇ  delMember
-            request.setAttribute("msg", "deleted"); // »èÁ¦ ¿Ï·á ¸Þ¼¼Áö Àü´Þ
+		if(button.equals("ï¿½ï¿½ï¿½ï¿½")) {
+			String id=request.getParameter("id"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ IDï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½
+            cardDAO.delCard(id); // DAOï¿½ï¿½  delMember
+            request.setAttribute("msg", "deleted"); // ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             
             System.out.println("a");
             response.sendRedirect("maintest2.jsp");
@@ -70,7 +71,7 @@ public class CardAddServlet extends HttpServlet {
 				response.setContentType("text/html;charset=UTF-8");
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
-				out.println("alert('·Î±×ÀÎ½ÇÆÐ')");
+				out.println("alert('ï¿½Î±ï¿½ï¿½Î½ï¿½ï¿½ï¿½')");
 				out.println("history.back()");
 				out.println("</script>");
 			}
@@ -87,9 +88,9 @@ public class CardAddServlet extends HttpServlet {
 		CardDAO cardDAO = new CardDAO();
 
         if(action.equals("/delete.do")){
-            String id=request.getParameter("id"); // »èÁ¦ÇÒ ID¸¦ ¹Þ¾Æ¿È
-            cardDAO.delCard(id); // DAOÀÇ  delMember
-            request.setAttribute("msg", "deleted"); // »èÁ¦ ¿Ï·á ¸Þ¼¼Áö Àü´Þ
+            String id=request.getParameter("id"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ IDï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½
+            cardDAO.delCard(id); // DAOï¿½ï¿½  delMember
+            request.setAttribute("msg", "deleted"); // ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             nextPage="/members/listMembers.do";
        }
     }

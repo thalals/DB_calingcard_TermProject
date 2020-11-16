@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="dao.*" %>
+<%@page import="java.util.ArrayList"%>
+<%@ page import ="vo.*" %>
+<%@ page import="java.io.PrintWriter" %>
+<% request.setCharacterEncoding("UTF-8"); %>
+<%@ page import="java.sql.*" %>
+<%@ page import="javax.sql.*" %>
+<%@ page import="javax.naming.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,10 +19,20 @@
 		<table>
 			<tr>
 				<td>
+				<%
+					int count=0;
+					OrgDAO orgDAO = new OrgDAO();
+					ArrayList<Org> orgname_list = orgDAO.getOrglist();
+				%>
 					<select name="choice">
-					  <option value="first">First Value</option>
-					  <option value="second" selected>Second Value</option>
-					  <option value="third">Third Value</option>
+				<% 
+					for(Org a:orgname_list){
+						
+				%>
+					<option value="<%=a.getOrgName() %>"><%=a.getOrgName() %></option>
+				<%
+					}
+				%>
 					</select>
 				</td>
 				<td>

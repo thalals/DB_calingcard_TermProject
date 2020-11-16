@@ -8,6 +8,10 @@
 </head>
 <body>
 <form method="post" action="card_create">
+<%
+	int x=(int)request.getAttribute("Org_Number");
+	System.out.println(x);
+%>
 <p> 이름 : </p>
 <input type="text" class="form-control" placehorder="성명" name="Name" maxlength="30">
 <p> 핸드폰 번호 : </p>

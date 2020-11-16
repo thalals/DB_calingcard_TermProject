@@ -3,11 +3,13 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import vo.Card;
 import vo.Org;
 
 public class OrgDAO {
@@ -52,6 +54,59 @@ public class OrgDAO {
 				e.printStackTrace();
 			}
 		}
+	}
+	public static int getOrgN(String text) {
+		PreparedStatement pstmt=null;
+		int x=0;
+		try {
+			pstmt=conn.prepareStatement("SELECT Org_Number from organization WHERE OrgName=?");
+			pstmt.setNString(1, text);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				x=rs.getInt(1);
+			}
+			
+			return x;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return 0;
+	}
+	public static ArrayList<Org> getOrglist() {
+		getOrg();
+		PreparedStatement pstmt=null;
+		ArrayList<Org> list = new ArrayList<Org>();
+
+		try {
+			pstmt=conn.prepareStatement("select OrgName from organization");
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Org org=new Org();
+				org.setOrgName(rs.getNString(1));
+				list.add(org);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				rs.close();
+				pstmt.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return list;
 	}
 	
 	
