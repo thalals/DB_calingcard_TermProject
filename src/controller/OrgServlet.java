@@ -77,10 +77,9 @@ public class OrgServlet extends HttpServlet {
 			
 			int num=orgDAO.getOrgN(name);
 			request.setAttribute("Org_Number", num);
+			response.setContentType("text/html;charset=UTF-8");
+			//request.setCharacterEncoding("utf-8"); 
 			
-			response.setContentType("text/html; utf-8");
-			request.setCharacterEncoding("utf-8"); 
-
 			
 			ServletContext context=getServletContext();
 			RequestDispatcher dispatcher=context.getRequestDispatcher("/card_create.jsp");
