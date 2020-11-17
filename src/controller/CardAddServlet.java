@@ -69,14 +69,20 @@ public class CardAddServlet extends HttpServlet {
 			dispatcher.forward(request,response);
 
 		}
-		else if(button.equals("카드수정")) {
+		else if(button.equals("카드수정")) {			
+			
+			System.out.println("서블릿 카드넘버 넘어오기 : "+request.getParameter("id"));
+			System.out.println("서블릿 경력 넘어오기 : "+request.getParameter("Carrer"));
+			
 			card.setName(request.getParameter("Name"));
 			card.setPhoneNumber(request.getParameter("PhoneNumber"));
 			card.setTeam(request.getParameter("Team"));
 			card.setPosition(request.getParameter("Position"));
 			card.setEmail(request.getParameter("Email"));
 			card.setCareer(request.getParameter("Carrer"));
+			card.setCardNumber(Integer.parseInt(request.getParameter("id")));
 			
+			System.out.println("ㅁa : "+card.getCardNumber() );
 			cardDAO.upCard(card);
 	
 		

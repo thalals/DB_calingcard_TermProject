@@ -152,7 +152,6 @@ public class CardDAO {
 		PreparedStatement pstmt=null;
 		
         try {
-           System.out.println("여기로 오냐??");
             pstmt=conn.prepareStatement("delete from card where CardNumber=?");
 			
            
@@ -192,13 +191,14 @@ public class CardDAO {
 		try {
 			pstmt=conn.prepareStatement(query.toString());
 			
+			System.out.println("cardDAO 수저 : " + card.getCareer() );
 			pstmt.setString(1, card.getName());
 			pstmt.setString(2, card.getPhoneNumber());
 			pstmt.setString(3, card.getTeam());
 			pstmt.setString(4, card.getPosition());
 			pstmt.setString(5, card.getEmail());
 			pstmt.setString(6, card.getCareer());
-			pstmt.setInt(7, card.getCardNumber());
+			pstmt.setString(7,  Integer.toString(card.getCardNumber()));
 	
 			int a = pstmt.executeUpdate();	//생성되면 0이상의 값 반환
 			
