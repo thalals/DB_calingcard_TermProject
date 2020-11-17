@@ -38,11 +38,12 @@ public class LoginServlet extends HttpServlet {
 			LoginService loginService=new LoginService();
 			Member loginMember=loginService.getLoginMember(id,passwd);
 			
-			// ·Î±×ÀÎ ¼º°øÇßÀ»‹š
+			
 			if(loginMember != null) {
 				HttpSession session=request.getSession();
 				session.setAttribute("id", id);
-				System.out.println(id + "»ç¿ëÀÚ ¾ÆÀÌµğ ¼­ºí¸´");
+				session.setAttribute("pw", id);
+				System.out.println(id + "ë¡œê·¸ì¸ ë¨");
 				
 				response.sendRedirect("maintest2.jsp");
 			}
@@ -50,7 +51,7 @@ public class LoginServlet extends HttpServlet {
 				response.setContentType("text/html;charset=UTF-8");
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
-				out.println("alert('·Î±×ÀÎ½ÇÆĞ')");
+				out.println("alert('ë¡œê·¸ì¸ ì‹¤íŒ¨')");
 				out.println("history.back()");
 				out.println("</script>");
 			}

@@ -68,35 +68,38 @@
 						CardDAO cardDAO = new CardDAO();
 						ArrayList<Card> card_list = cardDAO.getCardlist(); 						
 						
-						%>
+						 %>
 						<!-- EL 문법 -->
-						사용자 : ${ id }<br><br>
+						사용자 : ${ id } , <br><br>
 						
 						<%
 						for(Card a : card_list){
+
+							if(a.getUserID().equals(session.getAttribute("id"))  ){
 							%>
-							
-							<tr>
-							<td>작성자  : <%=a.getUserID() %> | </td>
-							
-							<td>카드번호  : <%=a.getCardNumber() %> | </td>
-							<td><%=a.getName() %></td>
-							<td><%=a.getPhoneNumber() %></td>
-							<td><%=a.getTeam() %></td>
-							<td><%=a.getPosition() %></td>
-							<td><%=a.getCareer() %></td>
-							</tr>
-							
-							<td>
- 								<input type = "hidden" name = "card_number" value ='<%=a.getCardNumber() %>'>
-								<input type = "submit" name = "btn" value = "삭제">
-								<input type = "submit" name = "btn" value = "수정">
+								<tr>
+								<td>작성자  : <%=a.getUserID() %> | </td>
 								
-							</td>
-							<br>
-							
-							
-						<% 
+								<td>카드번호  : <%=a.getCardNumber() %> | </td>
+								<td><%= a.getName() %></td>
+								<td><%=a.getPhoneNumber() %></td>
+								<td><%=a.getTeam() %></td>
+								<td><%=a.getPosition() %></td>
+								<td><%=a.getCareer() %></td>
+								<td>최종 수정 일자 : <%=a.getSaveDate() %></td>
+								</tr>
+								
+								<td>
+									
+	 								<input type = "hidden" name = "card_number" value ='<%=a.getCardNumber() %>'>
+									<input type = "submit" name = "btn" value = "삭제">
+									<input type = "submit" name = "btn" value = "수정">
+									
+								</td>
+								<br>
+						<%		
+							}
+						
 						count++;
 						}
 					

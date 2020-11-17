@@ -60,12 +60,7 @@ public class CardAddServlet extends HttpServlet {
 			CardDAO cardDAO = new CardDAO();
 			
 			String id=request.getParameter("card_number");  
-			
-//			card = cardDAO.selectCard(id);
-			
-//			request.setAttribute("id", id);
-//
-//			response.sendRedirect("updateCard.jsp");
+			System.out.println("수정할 카드번호 : " + id);
 			 
 			ServletContext context=getServletContext();
 			RequestDispatcher dispatcher=context.getRequestDispatcher("/updateCard.jsp");

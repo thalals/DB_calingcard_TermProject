@@ -1,16 +1,18 @@
 package dao;
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.*;
+import java.util.ArrayList;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import vo.Card;
-
-import java.sql.*;
-import java.util.ArrayList;
-
-import javax.*;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import static db.JdbcUtil.close;
 
 public class CardDAO {
 	
@@ -120,7 +122,7 @@ public class CardDAO {
 		
 		try {			
 			System.out.println("생성됩니까? : " +card.getName() + card.getPosition());
-			pstmt=conn.prepareStatement("INSERT INTO card (Name, PhoneNumber, Team, Position, Email, Career, UserID, Org_Number) VALUES (?,?,?,?,?,?,?,?)");
+			pstmt=conn.prepareStatement("INSERT INTO card (Name, PhoneNumber, Team, Position, Email, Career, UserID, Org_Number, save_date) VALUES (?,?,?,?,?,?,?,?,now())");
 				
 			pstmt.setString(1, card.getName());
 			pstmt.setString(2, card.getPhoneNumber());
@@ -179,7 +181,7 @@ public class CardDAO {
 		getCard();
 		PreparedStatement pstmt=null;
 		
-		String sql="UPDATE card SET Name = ?, PhoneNumber = ?,Team = ?,Position = ?,Email = ?,Career = ? WHERE CardNumber = ?";
+		String sql="UPDATE card SET Name = ?, PhoneNumber = ?,Team = ?,Position = ?,Email = ?,Career = ?, save_date = now() WHERE CardNumber = ?";
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
