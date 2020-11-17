@@ -8,6 +8,7 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="javax.sql.*" %>
 <%@ page import="javax.naming.*" %>
+<%@ page import="javax.servlet.*" %>
 <jsp:useBean id="card" class="vo.Card" scope="page" />
 <jsp:setProperty name="card" property="*" />
 <!DOCTYPE html>
@@ -66,7 +67,8 @@
 					<% 
 						int count =0 ;
 						CardDAO cardDAO = new CardDAO();
-						ArrayList<Card> card_list = cardDAO.getCardlist(); 						
+						ArrayList<Card> card_list = cardDAO.getCardlist(); 		
+						
 						
 						 %>
 						<!-- EL 문법 -->
@@ -74,8 +76,14 @@
 						
 						<%
 						for(Card a : card_list){
-
-							if(a.getUserID().equals(session.getAttribute("id"))  ){
+							
+							String b = a.getUserID();
+							session.setAttribute("id", a.getUserID());
+							String c = (String)session.getAttribute("id");
+							//System.out.println(a.getUserID().getClass().getName());
+							//System.out.println(session.getAttribute("id").getClass().getName());
+							//if(a.getUserID() ==session.getAttribute("id")  ){
+								if(b==c){
 							%>
 								<tr>
 								<td>작성자  : <%=a.getUserID() %> | </td>
@@ -98,6 +106,9 @@
 								</td>
 								<br>
 						<%		
+							}
+							else{
+								System.out.println("null값입니다.");
 							}
 						
 						count++;
