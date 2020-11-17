@@ -88,7 +88,7 @@
 							</tr>
 							
 							<td>
- 								<input type = "hidden" name = "id" value ="<%=a.getCardNumber() %>">
+ 								<input type = "hidden" name = "card_number" value ='<%=a.getCardNumber() %>'>
 								<input type = "submit" name = "btn" value = "삭제">
 								<input type = "submit" name = "btn" value = "수정">
 								
@@ -111,8 +111,8 @@
 					
 				</form>
 				<form action="org_info" method="POST">
-					<input type ="hidden" name="user_id" value="${ id }" >
-					<input type="submit" class="btn btn-primary form-control" name="btn" value="생성">	
+					<input type ="hidden" name="user_id" value='${ id }' >
+					<input type="submit" class="btn btn-primary form-control" name="btn" value="명함 생성">	
 				</form>	
 			</div>
 		</div>

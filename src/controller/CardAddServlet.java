@@ -37,30 +37,29 @@ public class CardAddServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
+//		response.setCharacterEncoding("euc-kr");
 		
 		
-		
-		//ï¿½ï¿½Æ°
 		String button = request.getParameter("btn");
-		System.out.println("¹öÆ°ÀÌ¸§: "+button);
+		System.out.println("ë²„íŠ¼ : "+button);
 		
-		if(button.equals("»èÁ¦")) {
+		if(button.equals("ì‚­ì œ")) {
 			Card card = new Card();
 			CardDAO cardDAO = new CardDAO();
 			
-			String id=request.getParameter("id"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ IDï¿½ï¿½ ï¿½Ş¾Æ¿ï¿½
+			String id=request.getParameter("card_number"); 
 			System.out.println("id:"+id);
-            cardDAO.delCard(id); // DAOï¿½ï¿½  delMember
-            request.setAttribute("msg", "deleted"); // ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ ï¿½Ş¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+            cardDAO.delCard(id); 
+            request.setAttribute("msg", "deleted"); 
             
             System.out.println("a");
             response.sendRedirect("maintest2.jsp");
 		}
-		else if(button.equals("¼öÁ¤")) {
+		else if(button.equals("ìˆ˜ì •")) {
 			Card card = new Card();
 			CardDAO cardDAO = new CardDAO();
 			
-			String id=request.getParameter("id");  
+			String id=request.getParameter("card_number");  
 			
 //			card = cardDAO.selectCard(id);
 			
@@ -71,19 +70,19 @@ public class CardAddServlet extends HttpServlet {
 			ServletContext context=getServletContext();
 			RequestDispatcher dispatcher=context.getRequestDispatcher("/updateCard.jsp");
 			
-			System.out.println("¼öÁ¤¼öÁ¤");
+			System.out.println("ìˆ˜ì •ìˆ˜ì •");
 			request.setAttribute("card", card);
-			request.setAttribute("id", id);
+			request.setAttribute("card_number", id);
 			
 			dispatcher.forward(request,response);
 
 		}
-		else if(button.equals("Ä«µå¼öÁ¤")) {			
+		else if(button.equals("ì¹´ë“œìˆ˜ì •")) {			
 			Card card = new Card();
 			CardDAO cardDAO = new CardDAO();
 			
-			System.out.println("¼­ºí¸´ Ä«µå³Ñ¹ö ³Ñ¾î¿À±â : "+request.getParameter("upid"));
-			System.out.println("¼­ºí¸´ °æ·Â ³Ñ¾î¿À±â : "+request.getParameter("upCarrer"));
+			System.out.println("ì—…ë°ì´íŠ¸ ì•„ì´ë””: "+request.getParameter("upid"));
+			System.out.println("ì—…ë°ì´íŠ¸ ê²½ë ¥ : "+request.getParameter("upCarrer"));
 			
 			card.setName(request.getParameter("upName"));
 			card.setPhoneNumber(request.getParameter("upPhoneNumber"));
@@ -93,7 +92,7 @@ public class CardAddServlet extends HttpServlet {
 			card.setCareer(request.getParameter("upCarrer"));
 			card.setCardNumber(Integer.parseInt(request.getParameter("upid")));
 			
-			System.out.println("¤±a : "+card.getCardNumber() );
+			System.out.println("ì—…ë°ì´íŠ¸ ì¹´ë“œ : "+card.getCardNumber() );
 			cardDAO.upCard(card);
 	
 		
@@ -104,24 +103,27 @@ public class CardAddServlet extends HttpServlet {
 				response.setContentType("text/html;charset=UTF-8");
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
-				out.println("alert('Ä«µå ¼öÁ¤ ½ÇÆĞ')");
+				out.println("alert('Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½')");
 				out.println("history.back()");
 				out.println("</script>");
 			}
 		}
 		
-		else if(button.equals("Ä«µåÃß°¡")) {
+		else if(button.equals("ì¹´ë“œì¶”ê°€")) {
 			Card card = new Card();
 			CardDAO cardDAO = new CardDAO();
+			card.setUserID(request.getParameter("user_id"));
+			card.setOrgNumber(Integer.parseInt(request.getParameter("Org_number")));
 			card.setName(request.getParameter("Name"));
 			card.setPhoneNumber(request.getParameter("PhoneNumber"));
 			card.setTeam(request.getParameter("Team"));
 			card.setPosition(request.getParameter("Position"));
 			card.setEmail(request.getParameter("Email"));
-			card.setCareer(request.getParameter("Carrer"));
+			card.setCareer(request.getParameter("Career"));
 			
 			cardDAO.addCard(card);
-	
+			
+			
 		
 			if (cardDAO != null) {
 				response.sendRedirect("maintest2.jsp");
@@ -130,7 +132,7 @@ public class CardAddServlet extends HttpServlet {
 				response.setContentType("text/html;charset=UTF-8");
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
-				out.println("alert('·Î±×ÀÎ ½ÇÆĞ')");
+				out.println("alert('ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½')");
 				out.println("history.back()");
 				out.println("</script>");
 			}

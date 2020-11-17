@@ -8,7 +8,7 @@
 </head>
 <body>
 <form method="post" action="org_info">
-	<p> 단체 이름 : </p>
+	<p><label> 단체 이름 : </label></p>
 	<input type="text" class="form-control" placehorder="name" name="OrgName" maxlength="30">
 	<p> 단체 주소 : </p>
 	<input type="text" class="form-control" placehorder="address" name="OrgAddress" maxlength="30">
@@ -18,8 +18,8 @@
 	<input type="text" class="form-control" placehorder="email" name="Orgemail" maxlength="30">
 	<p> 단체 팩스번호 : </p>
 	<input type="text" class="form-control" placehorder="fax" name="Orgfax" maxlength="30">
-	
-	<input type="submit" name="btn" value="생성">
+	<p> ${ id } </p>
+	<input type="submit" name="btn" value="회사생성">
 </form>
 </body>
 </html>

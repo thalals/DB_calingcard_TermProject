@@ -3,7 +3,7 @@
 <%@ page import="dao.*" %>
 <%@ page import="vo.*" %>
 <% request.setCharacterEncoding("UTF-8"); %>
-<% String id = (String)request.getAttribute("id"); %>
+<% String id = (String)request.getAttribute("card_number"); %>
 <% CardDAO cardDAO = new CardDAO();  %>
 <% Card card = new Card(); %>
 <% card = cardDAO.selectCard(id); %>

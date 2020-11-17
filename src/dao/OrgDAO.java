@@ -87,13 +87,15 @@ public class OrgDAO {
 		ArrayList<Org> list = new ArrayList<Org>();
 
 		try {
-			pstmt=conn.prepareStatement("select OrgName from organization");
+			pstmt=conn.prepareStatement("select * from organization");
 			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				Org org=new Org();
-				org.setOrgName(rs.getNString(1));
+				
+				org.setOrg_Number((int)rs.getInt(1));
+				org.setOrgName(rs.getString(2));
 				list.add(org);
 			}
 			

@@ -35,11 +35,13 @@ public class OrgServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
-		PrintWriter out= response.getWriter();
+		
+//		PrintWriter out= response.getWriter();
 		String button=request.getParameter("btn");
-	
-		if("생성".equals(button)) {
-			System.out.println("2");
+		
+		System.out.println("회사 버튼  : "+button);
+		if("회사생성".equals(button)) {
+			System.out.println("회사 생성");
 			Org org=new Org();
 			
 			org.setOrgName(request.getParameter("OrgName"));
@@ -59,7 +61,7 @@ public class OrgServlet extends HttpServlet {
 				response.setContentType("text/html;charset=UTF-8");
 				PrintWriter out1 = response.getWriter();
 				out1.println("<script>");
-				out1.println("alert('회사추가실패");
+				out1.println("alert('회사추가실패')");
 				out1.println("history.back()");
 				out1.println("</script>");
 			}
@@ -73,20 +75,20 @@ public class OrgServlet extends HttpServlet {
 		else if("다음".equals(button)) {
 			System.out.println("다음");
 			OrgDAO orgDAO = new OrgDAO();
-			String name=request.getParameter("choice");
+			String number=(String)request.getParameter("choice");
 			
-			int num=orgDAO.getOrgN(name);
-			request.setAttribute("Org_Number", num);
-			response.setContentType("text/html;charset=UTF-8");
-			//request.setCharacterEncoding("utf-8"); 
+			System.out.println("org서블릿 회사 넘버 : "+ number);
 			
+			request.setAttribute("Org_Number", number);
 			
-			ServletContext context=getServletContext();
-			RequestDispatcher dispatcher=context.getRequestDispatcher("/card_create.jsp");
-			System.out.println(num);
-			dispatcher.forward(request,response);
-			//response.sendRedirect("card_create.jsp");
-		}else if("명함 생성".equals(button)) {
+ 
+
+			RequestDispatcher rd=request.getRequestDispatcher("/card_create.jsp");
+			rd.forward(request, response);
+			
+//			response.sendRedirect("card_create.jsp");
+		}
+		else if("명함 생성".equals(button)) {
 			response.sendRedirect("orgselect.jsp");
 		}
 		

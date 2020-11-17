@@ -24,8 +24,8 @@ public class Card {
 	public String getUserID() {
 		return UserID;
 	}
-	public void setUserID(String UserID) {
-		UserID = UserID;
+	public void setUserID(String userID) {
+		UserID = userID;
 	}
 	public int getOrgNumber() {
 		return OrgNumber;

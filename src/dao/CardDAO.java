@@ -120,7 +120,7 @@ public class CardDAO {
 		
 		try {			
 			System.out.println("생성됩니까? : " +card.getName() + card.getPosition());
-			pstmt=conn.prepareStatement("INSERT INTO card (Name, PhoneNumber, Team, Position, Email, Career) VALUES (?,?,?,?,?,?)");
+			pstmt=conn.prepareStatement("INSERT INTO card (Name, PhoneNumber, Team, Position, Email, Career, UserID, Org_Number) VALUES (?,?,?,?,?,?,?,?)");
 				
 			pstmt.setString(1, card.getName());
 			pstmt.setString(2, card.getPhoneNumber());
@@ -128,9 +128,11 @@ public class CardDAO {
 			pstmt.setString(4, card.getPosition());
 			pstmt.setString(5, card.getEmail());
 			pstmt.setString(6, card.getCareer());
-
-			int a = pstmt.executeUpdate();	//생성되면 0이상의 값 반환
+			pstmt.setString(7, card.getUserID());
+			pstmt.setInt(8, card.getOrgNumber());
 			
+			int a = pstmt.executeUpdate();	//생성되면 0이상의 값 반환
+			System.out.println(card.getCareer());
 			System.out.println("생성됬나요 ~~ 행이 몆개인가여 : "+a);
 		}catch(Exception e) {
 			e.printStackTrace();
