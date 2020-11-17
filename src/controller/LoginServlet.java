@@ -42,7 +42,9 @@ public class LoginServlet extends HttpServlet {
 			if(loginMember != null) {
 				HttpSession session=request.getSession();
 				session.setAttribute("id", id);
-				response.sendRedirect("maintest.jsp");
+				System.out.println(id + "사용자 아이디 서블릿");
+				
+				response.sendRedirect("maintest2.jsp");
 			}
 			else {
 				response.setContentType("text/html;charset=UTF-8");

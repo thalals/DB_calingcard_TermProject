@@ -177,19 +177,10 @@ public class CardDAO {
 		getCard();
 		PreparedStatement pstmt=null;
 		
-		StringBuffer query = new StringBuffer();
-		query.append("UPDATE card SET Name = ?, ");
-		query.append("PhoneNumber = ?, ");
-		query.append("Team = ? ");
-		query.append("Position = ? ");
-		query.append("Email = ? ");
-		query.append("Career = ? ");
-	
-		query.append("WHERE CardNumber = ?");
-		
+		String sql="UPDATE card SET Name = ?, PhoneNumber = ?,Team = ?,Position = ?,Email = ?,Career = ? WHERE CardNumber = ?";
 		
 		try {
-			pstmt=conn.prepareStatement(query.toString());
+			pstmt=conn.prepareStatement(sql);
 			
 			System.out.println("cardDAO 수저 : " + card.getCareer() );
 			pstmt.setString(1, card.getName());

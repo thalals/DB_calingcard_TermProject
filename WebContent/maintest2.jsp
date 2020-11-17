@@ -66,12 +66,20 @@
 					<% 
 						int count =0 ;
 						CardDAO cardDAO = new CardDAO();
-						ArrayList<Card> card_list = cardDAO.getCardlist(); 
+						ArrayList<Card> card_list = cardDAO.getCardlist(); 						
 						
+						%>
+						<!-- EL 문법 -->
+						사용자 : ${ id }<br><br>
+						
+						<%
 						for(Card a : card_list){
 							%>
 							
 							<tr>
+							<td>작성자  : <%=a.getUserID() %> | </td>
+							
+							<td>카드번호  : <%=a.getCardNumber() %> | </td>
 							<td><%=a.getName() %></td>
 							<td><%=a.getPhoneNumber() %></td>
 							<td><%=a.getTeam() %></td>
@@ -103,6 +111,7 @@
 					
 				</form>
 				<form action="org_info" method="POST">
+					<input type ="hidden" name="user_id" value="${ id }" >
 					<input type="submit" class="btn btn-primary form-control" name="btn" value="생성">	
 				</form>	
 			</div>

@@ -39,14 +39,15 @@ public class CardAddServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		
-		Card card = new Card();
-		CardDAO cardDAO = new CardDAO();
-
+		
 		//ï¿½ï¿½Æ°
 		String button = request.getParameter("btn");
 		System.out.println("¹öÆ°ÀÌ¸§: "+button);
 		
 		if(button.equals("»èÁ¦")) {
+			Card card = new Card();
+			CardDAO cardDAO = new CardDAO();
+			
 			String id=request.getParameter("id"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ IDï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½
 			System.out.println("id:"+id);
             cardDAO.delCard(id); // DAOï¿½ï¿½  delMember
@@ -56,9 +57,17 @@ public class CardAddServlet extends HttpServlet {
             response.sendRedirect("maintest2.jsp");
 		}
 		else if(button.equals("¼öÁ¤")) {
+			Card card = new Card();
+			CardDAO cardDAO = new CardDAO();
+			
 			String id=request.getParameter("id");  
 			
-			card = cardDAO.selectCard(id);
+//			card = cardDAO.selectCard(id);
+			
+//			request.setAttribute("id", id);
+//
+//			response.sendRedirect("updateCard.jsp");
+			 
 			ServletContext context=getServletContext();
 			RequestDispatcher dispatcher=context.getRequestDispatcher("/updateCard.jsp");
 			
@@ -70,17 +79,19 @@ public class CardAddServlet extends HttpServlet {
 
 		}
 		else if(button.equals("Ä«µå¼öÁ¤")) {			
+			Card card = new Card();
+			CardDAO cardDAO = new CardDAO();
 			
-			System.out.println("¼­ºí¸´ Ä«µå³Ñ¹ö ³Ñ¾î¿À±â : "+request.getParameter("id"));
-			System.out.println("¼­ºí¸´ °æ·Â ³Ñ¾î¿À±â : "+request.getParameter("Carrer"));
+			System.out.println("¼­ºí¸´ Ä«µå³Ñ¹ö ³Ñ¾î¿À±â : "+request.getParameter("upid"));
+			System.out.println("¼­ºí¸´ °æ·Â ³Ñ¾î¿À±â : "+request.getParameter("upCarrer"));
 			
-			card.setName(request.getParameter("Name"));
-			card.setPhoneNumber(request.getParameter("PhoneNumber"));
-			card.setTeam(request.getParameter("Team"));
-			card.setPosition(request.getParameter("Position"));
-			card.setEmail(request.getParameter("Email"));
-			card.setCareer(request.getParameter("Carrer"));
-			card.setCardNumber(Integer.parseInt(request.getParameter("id")));
+			card.setName(request.getParameter("upName"));
+			card.setPhoneNumber(request.getParameter("upPhoneNumber"));
+			card.setTeam(request.getParameter("upTeam"));
+			card.setPosition(request.getParameter("upPosition"));
+			card.setEmail(request.getParameter("upEmail"));
+			card.setCareer(request.getParameter("upCarrer"));
+			card.setCardNumber(Integer.parseInt(request.getParameter("upid")));
 			
 			System.out.println("¤±a : "+card.getCardNumber() );
 			cardDAO.upCard(card);
@@ -93,13 +104,15 @@ public class CardAddServlet extends HttpServlet {
 				response.setContentType("text/html;charset=UTF-8");
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
-				out.println("alert('·Î±×ÀÎ ½ÇÆÐ')");
+				out.println("alert('Ä«µå ¼öÁ¤ ½ÇÆÐ')");
 				out.println("history.back()");
 				out.println("</script>");
 			}
 		}
 		
 		else if(button.equals("Ä«µåÃß°¡")) {
+			Card card = new Card();
+			CardDAO cardDAO = new CardDAO();
 			card.setName(request.getParameter("Name"));
 			card.setPhoneNumber(request.getParameter("PhoneNumber"));
 			card.setTeam(request.getParameter("Team"));
