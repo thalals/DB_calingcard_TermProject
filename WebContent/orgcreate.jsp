@@ -4,22 +4,45 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width", initial-scale="1">
+<link rel="stylesheet" href="css/create.css">
+<link rel="stylesheet" href="css/default2.css">
 <title>명함 추가</title>
 </head>
 <body>
 <form method="post" action="org_info">
-	<p><label> 단체 이름 : </label></p>
-	<input type="text" class="form-control" placehorder="name" name="OrgName" maxlength="30">
-	<p> 단체 주소 : </p>
-	<input type="text" class="form-control" placehorder="address" name="OrgAddress" maxlength="30">
-	<p> 단체 우편번호 : </p>
-	<input type="text" class="form-control" placehorder="zipcode" name="OrgZipCode" maxlength="30">
-	<p> 단체 이메일 : </p>
-	<input type="text" class="form-control" placehorder="email" name="Orgemail" maxlength="30">
-	<p> 단체 팩스번호 : </p>
-	<input type="text" class="form-control" placehorder="fax" name="Orgfax" maxlength="30">
-	<p> ${ id } </p>
-	<input type="submit" name="btn" value="회사생성">
+<div class="card_create_login">
+        <p> 단체 이름 </p>
+        
+        <div class = "input_text">
+            <input type="text" id="OrgName" name="OrgName" placeholder="name">
+        </div>
+        <p> 단체 주소 </p>
+        
+        <div class = "input_text">
+            <input type="text" id="OrgAddress" name="OrgAddress" placeholder="address">
+        </div>
+        <p> 단체 우편번호 </p>
+       
+        <div class = "input_text">
+            <input type="text" id="OrgZipCode" name="OrgZipCode" placeholder="zipcode">
+        </div>
+        <p> 단체 이메일 </p>
+        <div class = "input_text">
+            <input type="text" id="Orgemail" name="Orgemail" placeholder="email">
+        </div>
+        <p> 단체 팩스번호 </p>
+        <div class = "input_text">
+            <input type="text" id="Orgfax" name="Orgfax" placeholder="fax">
+        </div>
+        
+        <p> ${ id } </p>
+        <center>
+	    	<input type="submit" class=btn_org_create name="btn" value="회사생성">
+        </center>
+        
+    </div>
+	
 </form>
 </body>
 </html>

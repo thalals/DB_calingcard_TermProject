@@ -16,54 +16,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width", initial-scale="1">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/default2.css">
 <!-- 부트스트랩 사용하기 위해 링크 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
 
 <title>login 페이지</title>
 </head>
 <body>
-	<!-- nav는 페이지의 전체적인 구성을 보여줌 -->
-	<nav class="navbar navbar-default">
-	<!-- 헤더 부분 -->
-		<div class = "navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-				aria-expanded="false">
-				<!-- 화면의 너비를 줄였을때 나오는 메뉴버튼의 작대기 수 - span -->
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>	
-				<span class="icon-bar"></span>		
-			</button>
-			<a class="navbar-brand" href="main.jsp">명함 관리 웹 사이트</a>
-		</div>
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<!-- 하나의 리스트를 보여줄 떄 사용 -->
-			<ul class="nav navbar-nav">
-				<li> <a href="maintest.jsp">메인</a></li>
-				<li> <a href="bbs.jsp">게시판</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">접속하기<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li class="active"><a href="login.jsp">로그인</a></li>
-						<li><a href="join.jsp">회원가입</a></li> 
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</nav>
-	<div class="container">
+	<div class="mainboard">
 		<div class="clo-lg-4"></div>
 		<div class="clo-lg-4">
 			<div class="jumbotron" style="padding-top: 20px;">
 			
 				<form action = "card_create" method = "post" >
-					<h3 style="text-align: center;">명함 한눈에 보기</h3>
-					
+                    <div class="page_name">
+					    <h3>명함 한눈에 보기</h3>
+                    </div>
 					<% 
 						int count =0 ;
 						CardDAO cardDAO = new CardDAO();
@@ -76,25 +45,37 @@
 						
 						<%
 						for(Card a : card_list){
-							
-							String b = a.getUserID();
-							session.setAttribute("id", a.getUserID());
-							String c = (String)session.getAttribute("id");
+							//pass.equals(rs.getString("password")
+							//String b = a.getUserID();
+							//session.setAttribute("id", a.getUserID());
+							//String c = (String)session.getAttribute("id");
 							//System.out.println(a.getUserID().getClass().getName());
 							//System.out.println(session.getAttribute("id").getClass().getName());
 							//if(a.getUserID() ==session.getAttribute("id")  ){
-								if(b==c){
-							%>
+								if(a.getUserID().equals(session.getAttribute("id"))){
+                            %>
+                            <table class="card_table">
 								<tr>
 								<td>작성자  : <%=a.getUserID() %> | </td>
 								
-								<td>카드번호  : <%=a.getCardNumber() %> | </td>
-								<td><%= a.getName() %></td>
-								<td><%=a.getPhoneNumber() %></td>
-								<td><%=a.getTeam() %></td>
-								<td><%=a.getPosition() %></td>
-								<td><%=a.getCareer() %></td>
-								<td>최종 수정 일자 : <%=a.getSaveDate() %></td>
+                                <td>카드번호  : <%=a.getCardNumber() %> | </td>
+                                </tr>
+                                <tr>
+                                    <td><%= a.getName() %></td>
+                                <tr>
+                                    <td><%=a.getPhoneNumber() %></td>
+                                </tr>
+                                <tr>
+                                    <td><%=a.getTeam() %></td>
+                                </tr>   
+                                <tr>
+                                    <td><%=a.getPosition() %></td>
+                                </tr>
+                                <tr>
+                                    <td><%=a.getCareer() %></td>
+                                </tr>
+                                <tr>
+								    <td>최종 수정 일자 : <%=a.getSaveDate() %></td>
 								</tr>
 								
 								<td>
@@ -103,7 +84,8 @@
 									<input type = "submit" name = "btn" value = "삭제">
 									<input type = "submit" name = "btn" value = "수정">
 									
-								</td>
+                                </td>
+                            </table>
 								<br>
 						<%		
 							}
@@ -131,9 +113,7 @@
 			</div>
 		</div>
 	</div>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	
 	
 </body>
 </html>

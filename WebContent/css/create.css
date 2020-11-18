@@ -1,0 +1,33 @@
+
+
+.card_create_login > div {
+    padding: 0 0 10px;
+    text-align: center;
+}
+
+.card_create_login > div input{
+    width: 40%;
+    height: 36px;
+    box-sizing:border-box;
+    text-indent: 16px;
+}
+
+.btn_card_create{
+    width: 90%;
+    height: 36px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    box-shadow: 1px 1px 1px gray;
+    font-size:16px;
+}
+
+.btn_org_create{
+    width: 90%;
+    height: 36px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    box-shadow: 1px 1px 1px gray;
+    font-size:16px;
+}

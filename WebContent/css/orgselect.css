@@ -1,0 +1,24 @@
+select{
+    width: 90%;
+    border: 1px solid #999;
+    font-family: inherit;
+}
+
+.add_org{
+    width: 90%;
+    height: 25px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    box-shadow: 1px 1px 1px gray;
+    font-size:16px;
+}
+.next_page{
+    width: 90%;
+    height: 25px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    box-shadow: 1px 1px 1px gray;
+    font-size:16px;
+}

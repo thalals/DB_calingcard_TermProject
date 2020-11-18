@@ -1,0 +1,23 @@
+
+
+.update_create > div {
+    padding: 0 0 10px;
+    text-align: center;
+}
+
+.update_create > div input{
+    width: 40%;
+    height: 36px;
+    box-sizing:border-box;
+    text-indent: 16px;
+}
+
+.btn_update_card{
+    width: 90%;
+    height: 36px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    box-shadow: 1px 1px 1px gray;
+    font-size:16px;
+}

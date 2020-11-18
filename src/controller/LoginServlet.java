@@ -41,11 +41,14 @@ public class LoginServlet extends HttpServlet {
 			
 			if(loginMember != null) {
 				HttpSession session=request.getSession();
+				PrintWriter out = response.getWriter();
 				session.setAttribute("id", id);
 				session.setAttribute("pw", id);
 				System.out.println(id + "로그인 됨");
-				
-				response.sendRedirect("maintest2.jsp");
+				out.println("<script>");
+				out.println("location.href='maintest2.jsp'");
+				out.println("</script>");
+				//response.sendRedirect("maintest2.jsp");
 			}
 			else {
 				response.setContentType("text/html;charset=UTF-8");

@@ -8,7 +8,8 @@
 <!-- 부트스트랩 사용하기 위해 링크 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
+<link rel="stylesheet" href="css/loginstyle.css">
+<link rel="stylesheet" href="css/default2.css">
 <title>login 페이지</title>
 </head>
 <body>
@@ -45,29 +46,24 @@
 			</ul>
 		</div>
 	</nav>
-	<div class="container">
-		<div class="clo-lg-4"></div>
-		<div class="clo-lg-4">
-			<div class="jumbotron" style="padding-top: 20px;">
-				<section id="loginFormArea">
-				<form action="login" method="POST">
-					<h3 style="text-align: center;">로그인화면</h3>
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="아이디" name="UserID" id="UserID" maxlength="20">
-					</div>
-					<div class="form-group">
-						<input type="password" class="form-control" placeholder="비밀번호" name="UserPW" id="UserPW"maxlength="20">
-					</div>
-					
-					<input type="submit" class="btn btn-primary form-control" value="로그인">	
-				</form>
-				</section>	
-			</div>
-		</div>
-	</div>
+	
+	<form method="post" action="login">
+            <div class = "box_login">
+                <section class="login">
+                    <h2>로그인</h2>
+                </section>
+                <div class = "input_text">
+                    <input type="text" id="UserID" name="UserID" placeholder="ID">
+                </div>
+                <div class = "input_text">
+                    <input type="password" id="UserPW" name="UserPW" placeholder="Password">
+                </div>
+                <input type="submit" class="btn_login" value="로그인">
+                
+            </div>
+        </form>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	
 </body>
 </html>

@@ -12,6 +12,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width", initial-scale="1">
+<link rel="stylesheet" href="css/orgselect.css">
+<link rel="stylesheet" href="css/default2.css">
 <title>회사 선택</title>
 </head>
 <body>
@@ -26,7 +29,7 @@
 					
 				%>
 					사용자 : ${ id }	<br><br>				
-					<select name="choice">
+					<select name="choice" class="org_select">
 				<% 
 					for(Org a:orgname_list){
 						System.out.println("회사 넘버 제댈?: "+a.getOrg_Number());
@@ -36,14 +39,14 @@
 					}
 				%>
 					</select>
-				</td>
+                </td>
+			</tr>
+            <tr>
 				<td>
-					<input type="submit" value="추가" name="btn">
-				
-					<input type="submit" value="다음" name="btn">
+					<input type="submit" value="추가" name="btn" class="add_org">
+					<input type="submit" value="다음" name="btn" class="next_page">
 				</td>
-				</tr>
-			
+			</tr>
 		</table>
 	</form>
 </body>

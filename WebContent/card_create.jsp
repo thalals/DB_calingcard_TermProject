@@ -5,7 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width", initial-scale="1">
-
+<link rel="stylesheet" href="css/create.css">
+<link rel="stylesheet" href="css/default2.css">
 <% //response.setContentType("text/html; charset=euc-kr"); %>
 <%//response.setCharacterEncoding("euc-kr"); %>
 
@@ -16,25 +17,43 @@
 <% String OrgNumber = (String)request.getAttribute("Org_Number"); %>
 
 <form method="post" action="card_create">
-
-<p> 이름 : </p>
-<input type="text" class="form-control" placeholder="성명" name="Name" maxlength="30">
-<p> 핸드폰 번호 : </p>
-<input type="text" class="form-control" placeholder="숫자만 입력해 주세요" name="PhoneNumber" maxlength="30">
-<p> 부서 : </p>
-<input type="text" class="form-control" placeholder="없으면 입력하지 않으셔도 됩니다." name="Team" maxlength="30">
-<p> 직책 : </p>
-<input type="text" class="form-control" placeholder="없으면 입력하지 않으셔도 됩니다." name="Position" maxlength="30">
-<p> 이메일 : </p>
-<input type="text" class="form-control" placeholder="없으면 입력하지 않으셔도 됩니다." name="Email" maxlength="30">
-<p> 경력 : </p>
-<input type="text" class="form-control" placeholder="없으면 입력하지 않으셔도 됩니다." name="Career" maxlength="30">
-
-
-
-<input type="hidden" name="Org_number" value = '<%=OrgNumber %>' >
-<input type="hidden" name="user_id" value = '${ id }' >
-<input type="submit" class="btn btn-primary form-control" name="btn" value="카드추가">	
+    <div class="card_create_login">
+        <p> 이름 </p>
+        
+        <div class = "input_text">
+            <input type="text" id="Name" name="Name" placeholder="성명">
+        </div>
+        <p> 핸드폰 번호 </p>
+        
+        <div class = "input_text">
+            <input type="text" id="PhoneNumber" name="PhoneNumber" placeholder="숫자만 입력해 주세요">
+        </div>
+        <p> 부서 </p>
+       
+        <div class = "input_text">
+            <input type="text" id="Team" name="Team" placeholder="없으면 입력하지 않으셔도 됩니다">
+        </div>
+        <p> 직책 </p>
+        <div class = "input_text">
+            <input type="text" id="Position" name="Position" placeholder="없으면 입력하지 않으셔도 됩니다">
+        </div>
+        <p> 이메일 </p>
+        <div class = "input_text">
+            <input type="text" id="Email" name="Email" placeholder="없으면 입력하지 않으셔도 됩니다">
+        </div>
+        <p> 경력 </p>
+        <div class = "input_text">
+            <input type="text" id="Career" name="Career" placeholder="없으면 입력하지 않으셔도 됩니다">
+        </div>
+        
+        
+        <input type="hidden" name="Org_number" value = '<%=OrgNumber %>' >
+        <input type="hidden" name="user_id" value = '${ id }' >
+        <center>
+        <input type="submit" class="btn_card_create" name="btn" value="카드추가">	
+        </center>
+    </div>
+    </form>
 </form>
 </body>
 </html>
