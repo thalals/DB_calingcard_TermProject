@@ -24,25 +24,41 @@
 <title>login 페이지</title>
 </head>
 <body>
-	<div class="mainboard">
+	<div class="mainboard" >
 		<div class="clo-lg-4"></div>
 		<div class="clo-lg-4">
 			<div class="jumbotron" style="padding-top: 20px;">
-			
-				<form action = "card_create" method = "post" >
-                    <div class="page_name">
-					    <h3>명함 한눈에 보기</h3>
-                    </div>
+				<form action = "card_create" method = "post" class="main_form" >
+				<table class="main_table">
+					<tr>
+						<td>
+		                    <div class="page_name">
+							    <h3>명함 한눈에 보기</h3>
+		                    </div>
+	                    </td>
+                    </tr>
 					<% 
 						int count =0 ;
 						CardDAO cardDAO = new CardDAO();
 						ArrayList<Card> card_list = cardDAO.getCardlist(); 		
-						
-						
-						 %>
-						<!-- EL 문법 -->
-						사용자 : ${ id } , <br><br>
-						
+					%>
+					 <tr>
+                     	<td align:right;>
+                            <div class="btn_logout">
+                            	<input type = "submit" name = "btn" value = "로그아웃" class="btn_logout">
+                            </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+								<!-- EL 문법 -->
+								사용자 : ${ id } , 
+						</td>
+					</tr>	
+					<br>
+					<br>
+					<tr>
+						<td>
 						<%
 						for(Card a : card_list){
 							//pass.equals(rs.getString("password")
@@ -54,7 +70,7 @@
 							//if(a.getUserID() ==session.getAttribute("id")  ){
 								if(a.getUserID().equals(session.getAttribute("id"))){
                             %>
-                            <table class="card_table">
+                            <table class="card_table" style="bgcolor: #D8CEF6">
 								<tr>
 								<td>작성자  : <%=a.getUserID() %> | </td>
 								
@@ -103,13 +119,18 @@
 					<%
 					}
 					%>
-					 
-					
+						</td>
+					</tr>
+					<tr>
+						<td>
 				</form>
 				<form action="org_info" method="POST">
 					<input type ="hidden" name="user_id" value='${ id }' >
 					<input type="submit" class="btn btn-primary form-control" name="btn" value="명함 생성">	
 				</form>	
+						</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 	</div>

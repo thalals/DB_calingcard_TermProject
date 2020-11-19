@@ -1,0 +1,37 @@
+.start_board{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.main_table{
+    background-color: white;
+    width: 50%;
+    height: 50%;
+    border:1px solid black;
+    text-align:center;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.btn_login{
+    align: center;
+    width: 90%;
+    height: 40%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    box-shadow: 1px 1px 1px gray;
+    font-size:16px;
+}
+.btn_join{
+    width: 90%;
+    height: 40%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    box-shadow: 1px 1px 1px gray;
+    font-size:16px;
+}

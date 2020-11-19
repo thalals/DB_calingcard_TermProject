@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.CardDAO;
 import vo.Card;
@@ -131,6 +132,18 @@ public class CardAddServlet extends HttpServlet {
 				out.println("history.back()");
 				out.println("</script>");
 			}
+		}
+		else if(button.equals("로그아웃")) {
+			HttpSession session=request.getSession();
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			session.invalidate();
+			out.println("<script>");
+			out.println("location.href='index.jsp'");
+			out.println("alert('로그아웃되었습니다.')");
+			out.println("</script>");
+			
+			
 		}
 	}
 }
