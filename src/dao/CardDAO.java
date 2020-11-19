@@ -66,6 +66,7 @@ public class CardDAO {
 			try {
 				rs.close();
 				pstmt.close();
+			
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -78,7 +79,6 @@ public class CardDAO {
 		getCard();
 		PreparedStatement pstmt=null;
 		ArrayList<Card> list = new ArrayList<Card>();
-
 		try {
 			pstmt=conn.prepareStatement("select * from card");
 			
@@ -224,20 +224,4 @@ public class CardDAO {
 		}
 		return 0;
 	}
-	
-	public String getDate() {
-		String sql = "SELECT NOW()";
-		try {
-			PreparedStatement pstmt = conn.prepareStatement(sql);	
-			rs = pstmt.executeQuery();	
-			
-			if(rs.next()) {
-				return rs.getNString(1);
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		return "�삤瑜� ";
-	}
-
 }

@@ -52,14 +52,16 @@
                      <tr>
                         <td>
 								<!-- EL 문법 -->
-								사용자 : ${ id } , 
+								사용자 : ${ id }  
 						</td>
 					</tr>	
 					<br>
 					<br>
 					<tr>
 						<td>
+						
 						<%
+						
 						for(Card a : card_list){
 							//pass.equals(rs.getString("password")
 							//String b = a.getUserID();
@@ -68,6 +70,9 @@
 							//System.out.println(a.getUserID().getClass().getName());
 							//System.out.println(session.getAttribute("id").getClass().getName());
 							//if(a.getUserID() ==session.getAttribute("id")  ){
+								System.out.println("로그인 우저 :" + session.getAttribute("id"));
+								System.out.println("카드 우저 :" + a.getUserID());
+								
 								if(a.getUserID().equals(session.getAttribute("id"))){
                             %>
                             <table class="card_table" style="bgcolor: #D8CEF6">
@@ -115,7 +120,7 @@
 					
 					if(count==0){
 						%>
-						<tr><td colspan="7">작성한 게시글이 없습니다.</td></tr>		
+						<tr><td colspan="7">저장한 명함이 없습니다.</td></tr>		
 					<%
 					}
 					%>

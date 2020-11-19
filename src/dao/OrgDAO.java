@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 
 import vo.Card;
 import vo.Org;
+import vo.OrgCallNumber;
 
 public class OrgDAO {
 	private static Connection conn;	
@@ -29,6 +30,60 @@ public class OrgDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	//회사 번호 체크
+	public int Count() {
+		String sql = "SELECT COUNT(*) FROM organization";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);	
+			rs = pstmt.executeQuery();	
+			if(rs.next()) {
+				int num = rs.getInt(1);
+				return num;
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	//회사번호 추가
+	public static void add_orgnum(int Org_num, String num) {
+		getOrg();
+		
+		System.out.println("전화번호 추가되는 회사 번호 1:  " + num);
+		System.out.println("전화번호 추가되는 아이디:  " + Org_num);
+
+		Connection conn =null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try{
+			Context cp = new InitialContext();
+			DataSource ds = (DataSource)cp.lookup("java:comp/env/jdbc/detol");
+			conn = ds.getConnection();
+			
+			String sql ="insert into orgcallnum (OrgNumber, CallNumber) values (?, ?)";
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, Org_num);
+			ps.setString(2, num);
+			
+			ps.executeUpdate();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				rs.close();
+				pstmt.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	public static void addOrganization(Org org) {
 		getOrg();
 		PreparedStatement pstmt=null;
@@ -72,15 +127,49 @@ public class OrgDAO {
 			return x;
 		}catch(Exception e) {
 			e.printStackTrace();
-		}finally {
+		}
+		
+		return 0;
+	}
+	
+	public static ArrayList<OrgCallNumber> getOrgnum_list(int num){
+		
+		getOrg();
+		PreparedStatement pstmt=null;
+		ArrayList<OrgCallNumber> list = new ArrayList<OrgCallNumber>();
+
+		try {
+			pstmt=conn.prepareStatement("select * from orgcallnum where OrgNumber = ?");
+			pstmt.setInt(1, num);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				OrgCallNumber org=new OrgCallNumber();
+
+				org.setCallNumber(rs.getString(1));
+				org.setOrgNumber((int)rs.getInt(2));
+				
+				list.add(org);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		finally {
 			try {
+				rs.close();
 				pstmt.close();
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
 		}
-		return 0;
-	}
+	
+				
+	return list;
+}
+	
 	public static ArrayList<Org> getOrglist() {
 		getOrg();
 		PreparedStatement pstmt=null;
@@ -96,6 +185,10 @@ public class OrgDAO {
 				
 				org.setOrg_Number((int)rs.getInt(1));
 				org.setOrgName(rs.getString(2));
+				org.setOrgAddress(rs.getString(3));
+				org.setOrgZipCode(rs.getString(4));
+				org.setOrgfax(rs.getString(5));
+				org.setOrgemail(rs.getString(6));
 				list.add(org);
 			}
 			

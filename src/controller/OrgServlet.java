@@ -53,11 +53,17 @@ public class OrgServlet extends HttpServlet {
 			OrgDAO orgDAO = new OrgDAO();
 			orgDAO.addOrganization(org);
 			
-			if (orgDAO != null) {
-				response.sendRedirect("orgselect.jsp");
-			}
+			request.setAttribute("Org_number",orgDAO.Count() );
 			
-			else {
+			ServletContext context=getServletContext();
+			
+			System.out.println("회사 개수 : " +orgDAO.Count());
+			
+			RequestDispatcher rd=request.getRequestDispatcher("/addOrgnumber.jsp");
+			rd.forward(request, response);
+			
+			
+			if(orgDAO == null) {
 				response.setContentType("text/html;charset=UTF-8");
 				PrintWriter out1 = response.getWriter();
 				out1.println("<script>");
@@ -89,6 +95,28 @@ public class OrgServlet extends HttpServlet {
 //			response.sendRedirect("card_create.jsp");
 		}
 		else if("명함 생성".equals(button)) {
+			response.sendRedirect("orgselect.jsp");
+		}
+		else if("회사 전화 번호 추가".equals(button)) {
+			System.out.println("회사번호 추가");
+			OrgDAO orgDAO = new OrgDAO();
+			
+			int Org_id = Integer.parseInt(request.getParameter("id"));
+			String org_call = (String)request.getParameter("number");
+			System.out.println("회사번호 추가 서블릿 : 회사 넘버 "+Org_id);
+			orgDAO.add_orgnum(Org_id, org_call);
+			
+			request.setAttribute("Org_number",orgDAO.Count() );
+			
+			ServletContext context=getServletContext();
+			
+			
+			RequestDispatcher rd=request.getRequestDispatcher("/addOrgnumber.jsp");
+			rd.forward(request, response);
+			
+//			response.sendRedirect("addOrgNumber.jsp");
+		}
+		else if("번호 추가 완료".equals(button)) {
 			response.sendRedirect("orgselect.jsp");
 		}
 		

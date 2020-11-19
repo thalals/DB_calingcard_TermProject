@@ -15,10 +15,19 @@
 <meta name="viewport" content="width=device-width", initial-scale="1">
 <link rel="stylesheet" href="css/orgselect.css">
 <link rel="stylesheet" href="css/default2.css">
+
+<style type="text/css">
+#select_btn {
+	display:inline;
+	width : 80px;
+}
+
+form{display:inline-block;}
+</style>
 <title>회사 선택</title>
 </head>
 <body>
-	<form action="org_info" method="POST">
+	<form action="org_info" method="POST"  >
 		<table>
 			<tr>
 				<td>
@@ -29,22 +38,29 @@
 					
 				%>
 					사용자 : ${ id }	<br><br>				
-					<select name="choice" class="org_select">
 				<% 
 					for(Org a:orgname_list){
-						System.out.println("회사 넘버 제댈?: "+a.getOrg_Number());
+						
 				%>
-					<option  value="<%=a.getOrg_Number() %>"><%=a.getOrgName() %></option>
+				<div>
+				<div>
+					<input type="radio" name="choice" value="<%=a.getOrg_Number() %>"><%=a.getOrgName() %></option>
+					| (주소) : <%=a.getOrgAddress() %> | (우편번호) : <%=a.getOrgZipCode() %> | (fax) : <%=a.getOrgfax() %> | (email) : <%=a.getOrgemail() %> |
+					
+					<input type="hidden" value ="<%=a.getOrg_Number() %>" name = "org_number">
+					<input type="submit"  value="수정" name="btn" id = "select_btn" class="add_org">
+					<input type ="submit"  value="다음" name="btn" id = "select_btn" class="next_page"> <br>
+				</div>	
 				<%
 					}
 				%>
-					</select>
+					
                 </td>
 			</tr>
             <tr>
 				<td>
 					<input type="submit" value="추가" name="btn" class="add_org">
-					<input type="submit" value="다음" name="btn" class="next_page">
+					
 				</td>
 			</tr>
 		</table>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="dao.*" %>
+<% OrgDAO orgdao = new OrgDAO(); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +38,8 @@
             <input type="text" id="Orgfax" name="Orgfax" placeholder="fax">
         </div>
         
-        <p> ${ id } </p>
+       
+        
         <center>
 	    	<input type="submit" class=btn_org_create name="btn" value="회사생성">
         </center>

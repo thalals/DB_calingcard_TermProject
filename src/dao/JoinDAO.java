@@ -19,28 +19,20 @@ public class JoinDAO {
 	public void getJoin() {	
 		try {
 			Context initCtx=new InitialContext();
-			//Context envCtx=(Context)initCtx.lookup("java:comp/env");
-			//DataSource ds=(DataSource)envCtx.lookup("jdbc/jsptest");
 			DataSource ds=(DataSource)initCtx.lookup("java:comp/env/jdbc/detol");
 			con = ds.getConnection();
 			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	/*public static JoinDAO getInstance() {
-		if(joinDAO == null) {
-			joinDAO = new JoinDAO();
+		finally {
+			try {
+				con.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
-		return joinDAO;
 	}
-	
-	public void setConnection(Connection con) {
-		this.con=con;
-	}*/
-	
-
 		
 	public void setJoinMember(Member member) {
 		getJoin();
@@ -56,6 +48,13 @@ public class JoinDAO {
 			con.close();
 		}catch(Exception e) {
 			e.printStackTrace();
+		}
+		finally {
+			try {
+				pstmt.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 	}
