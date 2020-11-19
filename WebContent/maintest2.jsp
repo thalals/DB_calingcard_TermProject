@@ -16,8 +16,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width", initial-scale="1">
-<link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="css/default2.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/default2.css">
 <!-- 부트스트랩 사용하기 위해 링크 -->
 
 
@@ -44,7 +44,7 @@
 					%>
 					 <tr>
                      	<td align:right;>
-                            <div class="btn_logout">
+                            <div class="btn_logou">
                             	<input type = "submit" name = "btn" value = "로그아웃" class="btn_logout">
                             </div>
                         </td>
@@ -129,9 +129,9 @@
 					<tr>
 						<td>
 				</form>
-				<form action="org_info" method="POST">
+				<form action="org_info" method="POST" class="btn_card">
 					<input type ="hidden" name="user_id" value='${ id }' >
-					<input type="submit" class="btn btn-primary form-control" name="btn" value="명함 생성">	
+					<input type="submit" class="create_card" name="btn" value="명함 생성">	
 				</form>	
 						</td>
 					</tr>

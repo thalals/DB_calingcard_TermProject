@@ -2,11 +2,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border:1px solid black;
 }
 
 .main_table{
-	border: 1px solid black;
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
 .page_name{
@@ -14,8 +14,9 @@
 }
 
 .card_table{
-    border:1px solid black;
-    bgcolor: #D8CEF6;
+    background-color: #CEF6F5;
+    border-style: outset;
+    border-radius: 20px 20px 20px 20px;
 }
 .user_name{
 	width:30%;
@@ -25,5 +26,28 @@
 	align:right;
 }
 form.main_form{
-	border:1px solid black;
+	background-color: whitesmoke;
+	border-style: outset;
+	border-radius: 20px 20px 20px 20px;
+}
+
+.btn_logou{
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn_logout{
+	box-sizing: border-box;
+	color: white;
+	background-color:orange;
+}
+.btn_card{
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.create_card{
+	box-sizing:border-box;
+	color:white;
+	background-color:orange;
 }
