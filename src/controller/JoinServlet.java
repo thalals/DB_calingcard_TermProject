@@ -47,6 +47,7 @@ public class JoinServlet extends HttpServlet {
 		
 		JoinDAO joinDAO = new JoinDAO();
 		joinDAO.setJoinMember(member);
+		
 		/*String name=request.getParameter("UserName");
 		String id=request.getParameter("UserID");
 		String pw=request.getParameter("UserPW");
@@ -60,7 +61,7 @@ public class JoinServlet extends HttpServlet {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
-			out.println("alert('È¸¿ø°¡ÀÔ½ÇÆÐ')");
+			out.println("alert('È¸ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½')");
 			out.println("history.back()");
 			out.println("</script>");
 		}

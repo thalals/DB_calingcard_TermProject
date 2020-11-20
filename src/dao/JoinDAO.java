@@ -13,24 +13,17 @@ import vo.Member;
 
 public class JoinDAO {
 	private static JoinDAO joinDAO;
-	private Connection con;
+	private Connection conn;
 	
 	
 	public void getJoin() {	
 		try {
 			Context initCtx=new InitialContext();
 			DataSource ds=(DataSource)initCtx.lookup("java:comp/env/jdbc/detol");
-			con = ds.getConnection();
+			conn = ds.getConnection();
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-		}
-		finally {
-			try {
-				con.close();
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
 		}
 	}
 		
@@ -39,13 +32,13 @@ public class JoinDAO {
 		PreparedStatement pstmt=null;
 		
 		try {
-			pstmt=con.prepareStatement("INSERT INTO user VALUES(?,?,?,?)");
+			pstmt=conn.prepareStatement("INSERT INTO user VALUES(?,?,?,?)");
 			pstmt.setString(1,member.getUserName());
 			pstmt.setString(2,member.getUserID());
 			pstmt.setString(3,member.getUserPW());
 			pstmt.setString(4,member.getUserEmail());
-			pstmt.executeUpdate();
-			con.close();
+			int a = pstmt.executeUpdate();
+			//con.close();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
