@@ -62,7 +62,7 @@ public class OrgDAO {
 			Context cp = new InitialContext();
 			DataSource ds = (DataSource)cp.lookup("java:comp/env/jdbc/detol");
 			conn = ds.getConnection();
-			
+			System.out.println("여기 2번째 오낭");
 			String sql ="insert into orgcallnum (OrgNumber, CallNumber) values (?, ?)";
 			ps = conn.prepareStatement(sql);
 			
@@ -74,14 +74,14 @@ public class OrgDAO {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-		finally {
-			try {
-				rs.close();
-				pstmt.close();
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
+//		finally {
+//			try {
+//				rs.close();
+//				pstmt.close();
+//			}catch(Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
 	}
 	
 	public static void addOrganization(Org org) {
@@ -113,23 +113,41 @@ public class OrgDAO {
 			}
 		}
 	}
-	public static int getOrgN(String text) {
+	public static Org getOrgN(String n) {
+		getOrg();
 		PreparedStatement pstmt=null;
-		int x=0;
+		Org org = new Org();
+		
 		try {
-			pstmt=conn.prepareStatement("SELECT Org_Number from organization WHERE OrgName=?");
-			pstmt.setNString(1, text);
+			pstmt=conn.prepareStatement("SELECT * from organization WHERE OrgNumber=?");
+			pstmt.setString(1, n);
 			rs=pstmt.executeQuery();
-			while(rs.next()) {
-				x=rs.getInt(1);
+			
+			
+			if(rs.next()) {
+				org.setOrg_Number(rs.getInt(1));
+				org.setOrgName(rs.getString(2));
+				org.setOrgAddress(rs.getNString(3));
+				org.setOrgZipCode(rs.getString(4));
+				org.setOrgfax(rs.getNString(5));
+				org.setOrgemail(rs.getNString(6));
 			}
 			
-			return x;
+			return org;
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		finally {
+			try {
+				rs.close();
+				pstmt.close();
+			
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return org;
 		
-		return 0;
 	}
 	
 	public static ArrayList<OrgCallNumber> getOrgnum_list(int num){

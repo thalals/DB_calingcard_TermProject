@@ -59,7 +59,7 @@ public class OrgServlet extends HttpServlet {
 			
 			System.out.println("회사 개수 : " +orgDAO.Count());
 			
-			RequestDispatcher rd=request.getRequestDispatcher("/card_create.jsp");
+			RequestDispatcher rd=request.getRequestDispatcher("/addOrgnumber.jsp");
 			rd.forward(request, response);
 			
 			

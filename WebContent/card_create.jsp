@@ -35,7 +35,7 @@
     </td>
     <td class="create_card_right">
         <div class = "input_text">
-            <input type="text" class="text1" id="PhoneNumber" name="PhoneNumber" placeholder="숫자만 입력해 주세요">
+            <input type="text" class="text1" id="PhoneNumber" name="PhoneNumber"  default=" " placeholder="숫자만 입력해 주세요">
         </div>
     </td>
     </tr>
@@ -45,7 +45,7 @@
     </td>
     <td class="create_card_right">
         <div class = "input_text">
-            <input type="text" class="text1" id="Team" name="Team" placeholder="없으면 입력하지 않으셔도 됩니다">
+            <input type="text" class="text1" id="Team" name="Team"  default=" " placeholder="없으면 입력하지 않으셔도 됩니다">
         </div>
     </td>
     </tr>
@@ -55,7 +55,7 @@
     </td>
     <td class="create_card_right">
         <div class = "input_text">
-            <input type="text" class="text1" id="Position" name="Position" placeholder="없으면 입력하지 않으셔도 됩니다">
+            <input type="text" class="text1" id="Position" name="Position"  default=" " placeholder="없으면 입력하지 않으셔도 됩니다">
         </div>
     </td>
     </tr>
@@ -65,7 +65,7 @@
     </td>
     <td class="create_card_right">
         <div class = "input_text">
-            <input type="text" class="text1" id="Email" name="Email" placeholder="없으면 입력하지 않으셔도 됩니다">
+            <input type="text" class="text1" id="Email" name="Email"  default=" " placeholder="없으면 입력하지 않으셔도 됩니다">
         </div>
     </td>
     </tr>
@@ -75,7 +75,7 @@
     </td>
     <td class="create_card_right">
         <div class = "input_text">
-            <input type="text" class="text1" id="Career" name="Career" placeholder="없으면 입력하지 않으셔도 됩니다">
+            <input type="text" class="text1" id="Career" name="Career" default=" " placeholder="없으면 입력하지 않으셔도 됩니다">
         </div>
     </td>
     </tr> 
