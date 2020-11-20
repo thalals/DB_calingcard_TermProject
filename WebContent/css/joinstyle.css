@@ -1,5 +1,5 @@
 .box_join{
-    width : 70%;
+   	width : 300px;
     position: absolute;
     height: 400px;
     left: 50%;
@@ -13,7 +13,7 @@
     
 }
 
-.join > h2{
+.join > h3{
     padding:0 0 20px;
     border-bottom: 2px solid #111; 
     text-align: center; 
@@ -53,4 +53,7 @@
     margin-top: 10px;
     box-shadow: 1px 1px 1px gray;
     font-size:16px;
+    background-color: black;
+    color:white;
+    border-radius:20px 20px 20px 20px;
 }

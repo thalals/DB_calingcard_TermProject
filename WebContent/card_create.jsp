@@ -16,37 +16,70 @@
 
 <% String OrgNumber = (String)request.getAttribute("Org_Number"); %>
 
-<form method="post" action="card_create">
+<form method="post" action="card_create" class="card_create">
     <div class="card_create_login">
+    <table>
+    <tr>
+    <td class="create_card_left">
         <p> 이름 </p>
-        
+    </td>
+    <td class="create_card_right">
         <div class = "input_text">
-            <input type="text" id="Name" name="Name" placeholder="성명">
+            <input type="text" id="Name" name="Name" placeholder="성명" class="text1">
         </div>
+    </td>
+    </tr>
+    <tr>
+    <td class="create_card_left">
         <p> 핸드폰 번호 </p>
-        
+    </td>
+    <td class="create_card_right">
         <div class = "input_text">
-            <input type="text" id="PhoneNumber" name="PhoneNumber" placeholder="숫자만 입력해 주세요">
+            <input type="text" class="text1" id="PhoneNumber" name="PhoneNumber" placeholder="숫자만 입력해 주세요">
         </div>
+    </td>
+    </tr>
+    <tr>
+    <td class="create_card_left">
         <p> 부서 </p>
-       
+    </td>
+    <td class="create_card_right">
         <div class = "input_text">
-            <input type="text" id="Team" name="Team" placeholder="없으면 입력하지 않으셔도 됩니다">
+            <input type="text" class="text1" id="Team" name="Team" placeholder="없으면 입력하지 않으셔도 됩니다">
         </div>
+    </td>
+    </tr>
+    <tr>
+    <td class="create_card_left">
         <p> 직책 </p>
+    </td>
+    <td class="create_card_right">
         <div class = "input_text">
-            <input type="text" id="Position" name="Position" placeholder="없으면 입력하지 않으셔도 됩니다">
+            <input type="text" class="text1" id="Position" name="Position" placeholder="없으면 입력하지 않으셔도 됩니다">
         </div>
+    </td>
+    </tr>
+    <tr>
+    <td class="create_card_left">
         <p> 이메일 </p>
+    </td>
+    <td class="create_card_right">
         <div class = "input_text">
-            <input type="text" id="Email" name="Email" placeholder="없으면 입력하지 않으셔도 됩니다">
+            <input type="text" class="text1" id="Email" name="Email" placeholder="없으면 입력하지 않으셔도 됩니다">
         </div>
+    </td>
+    </tr>
+    <tr>
+    <td class="create_card_left">
         <p> 경력 </p>
+    </td>
+    <td class="create_card_right">
         <div class = "input_text">
-            <input type="text" id="Career" name="Career" placeholder="없으면 입력하지 않으셔도 됩니다">
+            <input type="text" class="text1" id="Career" name="Career" placeholder="없으면 입력하지 않으셔도 됩니다">
         </div>
-        
-        
+    </td>
+    </tr> 
+     </table>
         <input type="hidden" name="Org_number" value = '<%=OrgNumber %>' >
         <input type="hidden" name="user_id" value = '${ id }' >
         <center>

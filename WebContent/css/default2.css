@@ -1,4 +1,7 @@
 body{
+	display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: white;
     min-width: 320px;
     
@@ -7,3 +10,4 @@ p{
     font-size: 16px;
     text-align: center;
 }
+

@@ -1,7 +1,27 @@
+.jumbotron{
+	background-color: white;
+	border-style: outset;
+	border-radius: 20px 20px 20px 20px;
+}
 .mainboard{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.page_name > h3{
+	display: flex;
+	flex-direction: column;
+	padding:0 0 20px;
+    border-bottom: 2px solid #111; 
+    text-align: center; 
+    line-height: 1; 
+    font-size: 24px; 
+    color: #111;
+    text-shadow: 1px 1px 1px gray;
+}
+
+form.main_form{
+	
 }
 
 .main_table{
@@ -12,11 +32,40 @@
 .page_name{
     text-align:center;
 }
+.btn_logou{
+	display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.btn_logout{
+	box-sizing: border-box;
+	color: white;
+	background-color:black;
+	border-radius:10px 10px 10px 10px;
+}
+.table_info{
+	width:300px;
+}
 
 .card_table{
-    background-color: #CEF6F5;
+	width:100%;
+    background-color: white;
     border-style: outset;
-    border-radius: 20px 20px 20px 20px;
+}
+.card_s{
+	width: 33%;
+	height: 20px;
+	background-color:#58FA58;
+}
+.card_c{
+	width: 33%;
+	height: 20px;
+	background-color:#0B3B39;
+}
+.card_h{
+	width: 33%;
+	height: 20px;
+	background-color:#81F7F3;
 }
 .user_name{
 	width:30%;
@@ -25,29 +74,35 @@
 	widht:70%;	
 	align:right;
 }
-form.main_form{
-	background-color: whitesmoke;
-	border-style: outset;
-	border-radius: 20px 20px 20px 20px;
-}
 
-.btn_logou{
+.btn_position{
+	width: 100%;
 	display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
-.btn_logout{
-	box-sizing: border-box;
-	color: white;
-	background-color:orange;
+.btn_remove{
+	margin-left:10px;
+	margin-right: 10px;
 }
+
+.btn_update{
+	margin-left:10px;
+	margin-right: 10px;
+}
+
 .btn_card{
 	display: flex;
     align-items: center;
     justify-content: center;
 }
 .create_card{
+	width:80%;
+	height: 40px;
 	box-sizing:border-box;
 	color:white;
-	background-color:orange;
+	background-color:black;
+	margin-top:5px;
+	margin-bottom:3px;
+	border-radius: 10px 10px 10px 10px;
 }

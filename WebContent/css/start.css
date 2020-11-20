@@ -8,30 +8,36 @@
 
 .main_table{
     background-color: white;
-    width: 50%;
-    height: 50%;
-    border:1px solid black;
+    width: 300px;
+    height: 300px;
+    
     text-align:center;
     border-collapse: separate;
     border-spacing: 0 10px;
+    border-radius:20px 20px 20px 20px;
+    border-style: outset;
 }
 
 .btn_login{
     align: center;
-    width: 90%;
+    width: 80%;
     height: 40%;
     box-sizing: border-box;
     margin-bottom: 10px;
     margin-top: 10px;
     box-shadow: 1px 1px 1px gray;
     font-size:16px;
+    background-color:black;
+    color:white;
 }
 .btn_join{
-    width: 90%;
+    width: 80%;
     height: 40%;
     box-sizing: border-box;
     margin-bottom: 10px;
     margin-top: 10px;
     box-shadow: 1px 1px 1px gray;
     font-size:16px;
+    background-color:black;
+    color:white;
 }

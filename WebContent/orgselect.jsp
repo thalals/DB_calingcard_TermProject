@@ -27,7 +27,7 @@ form{display:inline-block;}
 <title>회사 선택</title>
 </head>
 <body>
-	<form action="org_info" method="POST"  >
+	<form action="org_info" method="POST" class="select_form">
 		<table>
 			<tr>
 				<td>
@@ -45,11 +45,13 @@ form{display:inline-block;}
 				<div>
 				<div>
 					<input type="radio" name="choice" value="<%=a.getOrg_Number() %>"><%=a.getOrgName() %></option>
-					| (주소) : <%=a.getOrgAddress() %> | (우편번호) : <%=a.getOrgZipCode() %> | (fax) : <%=a.getOrgfax() %> | (email) : <%=a.getOrgemail() %> |
-					
+					| (주소) : <%=a.getOrgAddress() %> | (우편번호) : <%=a.getOrgZipCode() %> |<!--  (email) : <%=a.getOrgfax() %> | (fax) : <%=a.getOrgemail() %> | -->
+					<hr>
+					<div class="btn_div">
 					<input type="hidden" value ="<%=a.getOrg_Number() %>" name = "org_number">
-					<input type="submit"  value="수정" name="btn" id = "select_btn" class="add_org">
-					<input type ="submit"  value="다음" name="btn" id = "select_btn" class="next_page"> <br>
+					<input type="submit"  value="수정" name="btn" id = "select_btn" class="update_org">
+					<input type ="submit"  value="다음" name="btn" id = "select_btn" class="next_page" style="backgroun-color:black;"> <br>
+					</div>
 				</div>	
 				<%
 					}

@@ -31,7 +31,7 @@
 				<form action = "card_create" method = "post" class="main_form" >
 				<table class="main_table">
 					<tr>
-						<td>
+						<td colspan="2">
 		                    <div class="page_name">
 							    <h3>명함 한눈에 보기</h3>
 		                    </div>
@@ -42,26 +42,20 @@
 						CardDAO cardDAO = new CardDAO();
 						ArrayList<Card> card_list = cardDAO.getCardlist(); 		
 					%>
-					 <tr>
+					<tr>
+						<td>
+								<!-- EL 문법 -->
+								사용자 : ${ id }  
+						</td>
                      	<td align:right;>
                             <div class="btn_logou">
                             	<input type = "submit" name = "btn" value = "로그아웃" class="btn_logout">
                             </div>
                         </td>
-                     </tr>
-                     <tr>
-                        <td>
-								<!-- EL 문법 -->
-								사용자 : ${ id }  
-						</td>
-					</tr>	
-					<br>
-					<br>
+                    </tr>	
 					<tr>
-						<td>
-						
+					<td colspan="2">
 						<%
-						
 						for(Card a : card_list){
 							//pass.equals(rs.getString("password")
 							//String b = a.getUserID();
@@ -72,67 +66,84 @@
 							//if(a.getUserID() ==session.getAttribute("id")  ){
 								System.out.println("로그인 우저 :" + session.getAttribute("id"));
 								System.out.println("카드 우저 :" + a.getUserID());
-								
-								if(a.getUserID().equals(session.getAttribute("id"))){
-                            %>
-                            <table class="card_table" style="bgcolor: #D8CEF6">
-								<tr>
+							if(a.getUserID().equals(session.getAttribute("id"))){
+	                    %>
+	                   
+	                    <table class="table_info">
+							<tr colspan="2">
 								<td>작성자  : <%=a.getUserID() %> | </td>
-								
-                                <td>카드번호  : <%=a.getCardNumber() %> | </td>
+                              	<td>카드번호  : <%=a.getCardNumber() %> | </td>
+                            </tr>
+                        </table>
+                            <table class="card_table">
+                            	<tr>
+                            		<td class="card_s"></td>
+                            		<td class="card_c"></td>
+                            		<td class="card_h"></td>
+                            	</tr>
+                                <tr>
+                                	<td ></td>
+                                	<td></td>
+                                    <td style="text-align:right;"><%= a.getName() %></td>
+                                    
                                 </tr>
                                 <tr>
-                                    <td><%= a.getName() %></td>
-                                <tr>
-                                    <td><%=a.getPhoneNumber() %></td>
+                                	<td ></td>
+                                	<td></td>
+                                    <td style="text-align:right;"><%=a.getTeam() %> | <%=a.getPosition() %></td>
                                 </tr>
                                 <tr>
-                                    <td><%=a.getTeam() %></td>
+                                	<td ></td>
+                                	<td></td>
+                                    <td style="text-align:right;"><%=a.getPhoneNumber() %></td>
                                 </tr>   
                                 <tr>
-                                    <td><%=a.getPosition() %></td>
+                                	<td></td>
+                                	<td></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
+                                	<td></td>
+                                	<td></td>
                                     <td><%=a.getCareer() %></td>
                                 </tr>
                                 <tr>
-								    <td>최종 수정 일자 : <%=a.getSaveDate() %></td>
+                                	<td style="width:200px;"><%=a.getSaveDate() %></td>
+                                	<td></td>
+                                	<td></td>
+								    
 								</tr>
+							</table>
+							</td>
+						</tr>
+						<tr>
+							<td class="btn_position" colspan="2">
 								
-								<td>
-									
-	 								<input type = "hidden" name = "card_number" value ='<%=a.getCardNumber() %>'>
-									<input type = "submit" name = "btn" value = "삭제">
-									<input type = "submit" name = "btn" value = "수정">
-									
-                                </td>
-                            </table>
-								<br>
-						<%		
-							}
+ 								<input type = "hidden" name = "card_number" value ='<%=a.getCardNumber() %>'>
+								<input type = "submit" class="btn_remove" name = "btn" value = "삭제">
+								<input type = "submit" class="btn_update" name = "btn" value = "수정">
+							</td>
+						</tr>
+					
+						<%		}
 							else{
 								System.out.println("null값입니다.");
 							}
-						
 						count++;
 						}
-					
-					
 					if(count==0){
 						%>
 						<tr><td colspan="7">저장한 명함이 없습니다.</td></tr>		
 					<%
 					}
-					%>
-						</td>
-					</tr>
+					%>	
+					</form>
 					<tr>
-						<td>
-				</form>
-				<form action="org_info" method="POST" class="btn_card">
-					<input type ="hidden" name="user_id" value='${ id }' >
-					<input type="submit" class="create_card" name="btn" value="명함 생성">	
-				</form>	
+						<td colspan="2">
+							<form action="org_info" method="POST" class="btn_card">
+								<input type ="hidden" name="user_id" value='${ id }' >
+								<input type="submit" class="create_card" name="btn" value="명함 생성">	
+							</form>	
 						</td>
 					</tr>
 				</table>
