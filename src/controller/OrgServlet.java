@@ -11,8 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+import dao.CardDAO;
 import dao.OrgDAO;
+import vo.Card;
 import vo.Org;
+import vo.OrgCallNumber;
 
 /**
  * Servlet implementation class OrgServlet
@@ -43,6 +47,7 @@ public class OrgServlet extends HttpServlet {
 		if("회사생성".equals(button)) {
 			System.out.println("회사 생성");
 			Org org=new Org();
+			OrgCallNumber orgcall = new OrgCallNumber();
 			
 			org.setOrgName(request.getParameter("OrgName"));
 			org.setOrgAddress(request.getParameter("OrgAddress"));
@@ -50,15 +55,15 @@ public class OrgServlet extends HttpServlet {
 			org.setOrgemail(request.getParameter("Orgemail"));
 			org.setOrgfax(request.getParameter("Orgfax"));
 			
+			
 			OrgDAO orgDAO = new OrgDAO();
 			orgDAO.addOrganization(org);
-			
-			request.setAttribute("Org_number",orgDAO.Count() );
 			
 			ServletContext context=getServletContext();
 			
 			System.out.println("회사 개수 : " +orgDAO.Count());
-			
+			request.setAttribute("Org_number",orgDAO.Count() );
+
 			RequestDispatcher rd=request.getRequestDispatcher("/addOrgnumber.jsp");
 			rd.forward(request, response);
 			
@@ -102,26 +107,104 @@ public class OrgServlet extends HttpServlet {
 			OrgDAO orgDAO = new OrgDAO();
 			
 			int Org_id = Integer.parseInt(request.getParameter("id"));
-			String org_call = (String)request.getParameter("number");
+			String org_call1 = (String)request.getParameter("number1");
+			String org_call2 = (String)request.getParameter("number2");
+			
 			System.out.println("회사번호 추가 서블릿 : 회사 넘버 "+Org_id);
-			orgDAO.add_orgnum(Org_id, org_call);
+			System.out.println("1번 번호 :" + org_call1 + "2번 번호 : "+ org_call2);
+			
+			if(!org_call1.equals(null))
+				orgDAO.add_orgnum(Org_id, org_call1);
+			
+			if(!org_call1.equals(null))
+				orgDAO.add_orgnum(Org_id, org_call2);
 			
 			request.setAttribute("Org_number",orgDAO.Count() );
 			
+			response.sendRedirect("orgselect.jsp");
+
+		}
+		
+		else if("수정".equals(button)) {
+			Org org = new Org();
+			OrgDAO orgDAO = new OrgDAO();
+			
+			String id=(String)request.getParameter("choice");  
+			System.out.println("수정할 회사번호 : " + id);
+			 
+			ServletContext context=getServletContext();
+			RequestDispatcher dispatcher=context.getRequestDispatcher("/updateOrg.jsp");
+			
+			request.setAttribute("org_number", id);
+			
+			dispatcher.forward(request,response);
+		}
+		
+		else if("회사 수정".equals(button)) {
+			System.out.println("회사 수정");
+			Org org=new Org();
+			
+
+			String id=(String)request.getParameter("upid");  
+
+			org.setOrgName(request.getParameter("upOrgName"));
+			org.setOrgAddress(request.getParameter("upOrgAddress"));
+			org.setOrgZipCode(request.getParameter("upOrgZipCode"));
+			org.setOrgemail(request.getParameter("upOrgemail"));
+			org.setOrgfax(request.getParameter("upOrgfax"));
+
+			org.setOrg_Number(Integer.parseInt(id));
+			
+			OrgDAO orgDAO = new OrgDAO();
+			orgDAO.upOrganization(org);
+			
 			ServletContext context=getServletContext();
 			
-			
-			RequestDispatcher rd=request.getRequestDispatcher("/addOrgnumber.jsp");
+			request.setAttribute("Org_number",Integer.parseInt(request.getParameter("upid") ));
+
+			RequestDispatcher rd=request.getRequestDispatcher("/upOrgnumber.jsp");
 			rd.forward(request, response);
-			
-//			response.sendRedirect("addOrgNumber.jsp");
 		}
-		else if("번호 추가 완료".equals(button)) {
+		
+		else if ("회사 전화 번호 수정".equals(button)) {
+			System.out.println("회사 전화 번호 수정");
+			
+			PrintWriter out=response.getWriter(); //getWriter() 출력스트림
+				
+			OrgCallNumber orgcall = new OrgCallNumber();
+			OrgDAO orgdao = new OrgDAO();
+			
+			orgcall.setOrgNumber(Integer.parseInt(request.getParameter("upid")));
+			orgcall.setCallNumber(request.getParameter("upnumber1"));
+			
+			String number = (String)request.getParameter("number1");
+			
+			if(!number.equals(null)) {
+				orgdao.upOrg_num(orgcall, request.getParameter("number1"));
+			}else {
+				orgdao.add_orgnum(Integer.parseInt(request.getParameter("upid")), request.getParameter("upnumber1"));
+			}
+			
+			orgcall.setCallNumber(request.getParameter("upnumber2"));
+			
+			number = (String)request.getParameter("number2");
+
+			if(!number.equals(null)) {
+				orgdao.upOrg_num(orgcall, request.getParameter("number2"));
+			}
+			else if(number.equals(null) && !request.getParameter("upnumber2").equals(null)) {
+				orgdao.add_orgnum(Integer.parseInt(request.getParameter("upid")), request.getParameter("upnumber2"));
+			}
+			
+			System.out.println("회사번호 수정 완료");
+			
+			out.println("<script>");
+			out.println("alert('번호가 수정 되었습니다.')");
+			out.println("</script>");
+			
 			response.sendRedirect("orgselect.jsp");
+
 		}
-		
-			
-		
 	}
 
 }

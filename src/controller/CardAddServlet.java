@@ -49,6 +49,7 @@ public class CardAddServlet extends HttpServlet {
 			CardDAO cardDAO = new CardDAO();
 			
 			String id=request.getParameter("card_number"); 
+			
 			System.out.println("id:"+id);
             cardDAO.delCard(id); 
             request.setAttribute("msg", "deleted"); 
@@ -60,7 +61,8 @@ public class CardAddServlet extends HttpServlet {
 			Card card = new Card();
 			CardDAO cardDAO = new CardDAO();
 			
-			String id=request.getParameter("card_number");  
+			String id=request.getParameter("card_number");
+			
 			System.out.println("수정할 카드번호 : " + id);
 			 
 			ServletContext context=getServletContext();

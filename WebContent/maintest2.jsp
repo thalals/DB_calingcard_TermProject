@@ -64,8 +64,7 @@
 							//System.out.println(a.getUserID().getClass().getName());
 							//System.out.println(session.getAttribute("id").getClass().getName());
 							//if(a.getUserID() ==session.getAttribute("id")  ){
-								System.out.println("로그인 우저 :" + session.getAttribute("id"));
-								System.out.println("카드 우저 :" + a.getUserID());
+								
 							if(a.getUserID().equals(session.getAttribute("id"))){
 	                    %>
 	                   

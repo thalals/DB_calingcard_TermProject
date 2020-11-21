@@ -33,16 +33,31 @@ public class OrgDAO {
 	
 	//회사 번호 체크
 	public int Count() {
+		
+		getOrg();
 		String sql = "SELECT COUNT(*) FROM organization";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);	
 			rs = pstmt.executeQuery();	
 			if(rs.next()) {
 				int num = rs.getInt(1);
+				
+				rs.close();
+				pstmt.close();
+				conn.close();
+				
 				return num;
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		return 0;
 	}
@@ -74,14 +89,85 @@ public class OrgDAO {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-//		finally {
-//			try {
-//				rs.close();
-//				pstmt.close();
-//			}catch(Exception e) {
-//				e.printStackTrace();
-//			}
-//		}
+		finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	//회사 번호 수정
+	public static void upOrg_num(OrgCallNumber orgcall, String state_number) {
+		getOrg();
+		PreparedStatement pstmt=null;
+		
+		String sql="UPDATE orgcallnum SET CallNumber = ? WHERE CallNumber = ?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			System.out.println("회사 번호 수정 다오 : " );
+			pstmt.setString(1, orgcall.getCallNumber());
+			pstmt.setString(2, state_number);
+			
+	
+			int a = pstmt.executeUpdate();	//생성되면 0이상의 값 반환
+			
+			System.out.println("수정됬나요 ~~ 행이 몆개인가여 : "+a);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+	//회사 테이블 컬럼 수정
+	public static void upOrganization(Org org) {
+		getOrg();
+		PreparedStatement pstmt=null;
+		
+		String sql="UPDATE organization SET OrgName = ?, OrgAddress = ?,OrgZipCode = ?,Orgfax = ?, OrgEmail = ? WHERE OrgNumber = ?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			System.out.println("회사수정 : " );
+			pstmt.setString(1, org.getOrgName());
+			pstmt.setString(2, org.getOrgAddress());
+			pstmt.setString(3, org.getOrgZipCode());
+			pstmt.setString(4, org.getOrgfax());
+			pstmt.setString(5, org.getOrgemail());
+			pstmt.setString(6, Integer.toString(org.getOrg_Number()));
+	
+			int a = pstmt.executeUpdate();	//생성되면 0이상의 값 반환
+			
+			System.out.println("수정됬나요 ~~ 행이 몆개인가여 : "+a);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	public static void addOrganization(Org org) {
@@ -108,6 +194,7 @@ public class OrgDAO {
 		finally {
 			try {
 				pstmt.close();
+				conn.close();
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -164,12 +251,12 @@ public class OrgDAO {
 			
 			while(rs.next()) {
 				
-				OrgCallNumber org=new OrgCallNumber();
+				OrgCallNumber orgcall=new OrgCallNumber();
 
-				org.setCallNumber(rs.getString(1));
-				org.setOrgNumber((int)rs.getInt(2));
+				orgcall.setCallNumber(rs.getString(1));
+				orgcall.setOrgNumber((int)rs.getInt(2));
 				
-				list.add(org);
+				list.add(orgcall);
 			}
 		}
 		catch(Exception e) {
@@ -179,6 +266,7 @@ public class OrgDAO {
 			try {
 				rs.close();
 				pstmt.close();
+				conn.close();
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -217,6 +305,7 @@ public class OrgDAO {
 			try {
 				rs.close();
 				pstmt.close();
+				conn.close();
 			}catch(Exception e) {
 				e.printStackTrace();
 			}

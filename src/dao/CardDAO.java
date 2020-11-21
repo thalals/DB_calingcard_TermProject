@@ -66,7 +66,7 @@ public class CardDAO {
 			try {
 				rs.close();
 				pstmt.close();
-			
+				conn.close();
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -107,6 +107,7 @@ public class CardDAO {
 			try {
 				rs.close();
 				pstmt.close();
+				conn.close();
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -143,10 +144,13 @@ public class CardDAO {
 			try {
 				rs.close();
 				pstmt.close();
+				conn.close();
+
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
 		}
+		
 		
 	}
 	
@@ -170,6 +174,8 @@ public class CardDAO {
 			try {
 				rs.close();
 				pstmt.close();
+				conn.close();
+
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -205,6 +211,8 @@ public class CardDAO {
 			try {
 				rs.close();
 				pstmt.close();
+				conn.close();
+
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -221,6 +229,16 @@ public class CardDAO {
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
+		}
+		finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		return 0;
 	}

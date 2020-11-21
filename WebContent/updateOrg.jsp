@@ -1,18 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="dao.*" %>
-<% OrgDAO orgdao = new OrgDAO(); %>
-
+<%@ page import="vo.*" %>
+<% request.setCharacterEncoding("UTF-8"); %>
+<% String id = (String)request.getAttribute("org_number"); %>
+<% OrgDAO orgDAO = new OrgDAO();  %>
+<% Org org = new Org(); %>
+<% org = orgDAO.getOrgN(id); %>
+<% System.out.println("id 확인 : " +id);%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width", initial-scale="1">
-<link rel="stylesheet" href="css/create.css">
+<link rel="stylesheet" href="css/updatecard.css">
 <link rel="stylesheet" href="css/default2.css">
-<title>명함 추가</title>
+<title>회사 수정</title>
 </head>
 <body>
+
 <form method="post" action="org_info" class="org_create">
 <div class="card_create_login">
 <table>
@@ -22,7 +28,7 @@
     </td>
     <td class="create_card_right">
         <div class = "input_text">
-            <input type="text" id="OrgName" name="OrgName" placeholder="name">
+            <input type="text" id="OrgName" name="upOrgName" placeholder="name"  value = "<%=org.getOrgName()%>">
         </div>
     </td>
     </tr>
@@ -32,7 +38,7 @@
     </td>
     <td class="create_card_right">    
         <div class = "input_text">
-            <input type="text" id="OrgAddress" name="OrgAddress" placeholder="address">
+            <input type="text" id="OrgAddress" name="upOrgAddress" placeholder="address" value = "<%=org.getOrgAddress()%>">
         </div>
     </td>
     </tr>
@@ -42,7 +48,7 @@
     </td>
     <td class="create_card_right">   
         <div class = "input_text">
-            <input type="text" id="OrgZipCode" name="OrgZipCode" placeholder="zipcode">
+            <input type="text" id="OrgZipCode" name="upOrgZipCode" placeholder="zipcode" value = "<%=org.getOrgZipCode()%>">
         </div>
     </td>
     </tr>
@@ -52,7 +58,7 @@
     </td>
     <td class="create_card_right"> 
         <div class = "input_text">
-            <input type="text" id="Orgemail" name="Orgemail" placeholder="email">
+            <input type="text" id="Orgemail" name="upOrgemail" placeholder="email" value = "<%=org.getOrgemail()%>">
         </div>
     </td>
     </tr>
@@ -62,7 +68,7 @@
     </td>
     <td class="create_card_right"> 
         <div class = "input_text">
-            <input type="text" id="Orgfax" name="Orgfax" placeholder="fax">
+            <input type="text" id="Orgfax" name="upOrgfax" placeholder="fax" value = "<%=org.getOrgfax()%>">
         </div>
     </td>
     </tr>
@@ -71,7 +77,8 @@
  
         
         <center>
-	    	<input type="submit" class=btn_org_create name="btn" value="회사생성">
+    <input type ="hidden" name="upid" value = "<%=org.getOrg_Number() %>">
+	    	<input type="submit" class=btn_org_create name="btn" value="회사 수정">
         </center>
         
     </div>

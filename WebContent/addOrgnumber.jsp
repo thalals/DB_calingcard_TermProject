@@ -40,9 +40,6 @@
 		
 		Org org = orgDAO.getOrgN(id);
 		
-
-		ArrayList<OrgCallNumber> orgCall_list = orgDAO.getOrgnum_list(Integer.parseInt(id));
-		System.out.println("여기 서 문제");
 		
 		%>
 			<form name="updateform" action="org_info" method="post">
@@ -53,23 +50,21 @@
 					</td>
 				</tr>
 				
-				<%for (OrgCallNumber a : orgCall_list){ %>
-					
-					<tr>
-						<td><label for = "number">전화번호 : </label></td>
-						<td><input type="text" name="a"  disabled value=<%=a.getCallNumber() %>  /></td>
-					</tr>
-					
-				<%} %>
 				<tr>
-					<td><label for = "number">전화번호 : </label></td>
-					<td><input type="text" name="number"  /></td>
-					<input type="hidden" name ="id" value =<%=org.getOrg_Number()%> >
+					<td><label for = "number">전화번호1 : </label></td>
+					<td><input type="text" name="number1" placeholder="call number" /></td>
 				</tr>
+				
+				<tr>
+					<td><label for = "number">전화번호2 : </label></td>
+					<td><input type="text" name="number2"  placeholder="call number"  /></td>
+				</tr>
+				
 				<tr>
 					<td colspan="2">
+						
+						<input type="hidden" name ="id" value =<%=org.getOrg_Number()%> >
 						<input type="submit" name ="btn" value ="회사 전화 번호 추가">
-						<input type="submit" name ="btn" value ="번호 추가 완료">
 					</td>
 				</tr>
 			</table>
