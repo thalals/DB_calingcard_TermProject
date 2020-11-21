@@ -122,7 +122,20 @@ public class OrgServlet extends HttpServlet {
 			request.setAttribute("Org_number",orgDAO.Count() );
 			response.sendRedirect("orgselect.jsp");
 		}
-		
+		else if("소속단체 수정".equals(button)) {
+			Org org = new Org();
+			OrgDAO orgDAO = new OrgDAO();
+			
+			String id=(String)request.getParameter("choice");  
+			System.out.println("수정할 회사번호 : " + id);
+			 
+			ServletContext context=getServletContext();
+			RequestDispatcher dispatcher=context.getRequestDispatcher("/updateOrg.jsp");
+			
+			request.setAttribute("org_number", id);
+			
+			dispatcher.forward(request,response);
+		}
 		else if("수정".equals(button)) {
 			Org org = new Org();
 			OrgDAO orgDAO = new OrgDAO();
@@ -200,7 +213,7 @@ public class OrgServlet extends HttpServlet {
 			out.println("alert('번호가 수정 되었습니다.')");
 			out.println("</script>");
 			
-			response.sendRedirect("orgselect.jsp");
+			response.sendRedirect("maintest2.jsp");
 
 		}
 	}

@@ -55,6 +55,11 @@
                         </td>
                     </tr>
                     <tr>
+                    <td>
+                    	<a href="#gotobottom">카드 생성으로</a>
+                    </td>
+                    </tr>
+                    <tr>
 						<td colspan="2">
 							<%
 							for(Card a : card_list){
@@ -72,7 +77,7 @@
 		                    <table class="table_info">
 								<tr colspan="2">
 									<td>작성자  : <%=a.getUserID() %> | </td>
-	                              	<td>카드번호  : <%=a.getCardNumber() %> | </td>
+	                              	<!-- <td>카드번호  : <%=a.getCardNumber() %> | </td> -->
 	                            </tr>
 	                        </table>
                             <table class="card_table">
@@ -82,15 +87,13 @@
                             		<td class="card_h"></td>
                             	</tr>
                                 <tr>
-                                	<td><%=a.getOrgNumber() %></td>
+                                	<td></td>
                                 	<td></td>
                                     <td style="text-align:right;"><%= a.getName() %></td>
                                     
                                 </tr>
                                 <tr>
                                 	<td>
-                                	<%int x=a.getOrgNumber(); %>
-                                	<input type="text" name="org_num" value=<%=x %>>
                                     </td>
                                 	<td></td>
                                     <td style="text-align:right;"><%=a.getTeam() %> | <%=a.getPosition() %></td>
@@ -113,7 +116,7 @@
                                 <tr>
                                 	<td style="width:200px;"><%=a.getSaveDate() %></td>
                                 	<td></td>
-                                	<td></td> 
+                                	<td style="text-align:right;"><%=a.getEmail() %></td> 
 								</tr>
 							</table>
 							</td>
@@ -144,7 +147,7 @@
 					</table>
 						
 					</form>
-					
+					<div id='gotobottom'/>
 					<form action="org_info" method="POST" class="btn_card">
 						<input type ="hidden" name="user_id" value='${ id }' >
 						<input type="submit" class="create_card" name="btn" value="명함 생성">	
