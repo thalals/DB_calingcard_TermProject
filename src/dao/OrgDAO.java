@@ -69,16 +69,12 @@ public class OrgDAO {
 		System.out.println("전화번호 추가되는 회사 번호 1:  " + num);
 		System.out.println("전화번호 추가되는 아이디:  " + Org_num);
 
-		Connection conn =null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
 		try{
-			Context cp = new InitialContext();
-			DataSource ds = (DataSource)cp.lookup("java:comp/env/jdbc/detol");
-			conn = ds.getConnection();
 			System.out.println("여기 2번째 오낭");
-			String sql ="insert into orgcallnum (OrgNumber, CallNumber) values (?, ?)";
+			String sql ="insert into orgcallnum (Org_Number, CallNumber) values (?, ?)";
 			ps = conn.prepareStatement(sql);
 			
 			ps.setInt(1, Org_num);
@@ -91,7 +87,6 @@ public class OrgDAO {
 		}
 		finally {
 			try {
-				rs.close();
 				pstmt.close();
 				conn.close();
 			}catch(Exception e) {
@@ -206,7 +201,7 @@ public class OrgDAO {
 		Org org = new Org();
 		
 		try {
-			pstmt=conn.prepareStatement("SELECT * from organization WHERE OrgNumber=?");
+			pstmt=conn.prepareStatement("SELECT * from organization WHERE Org_Number=?");
 			pstmt.setString(1, n);
 			rs=pstmt.executeQuery();
 			
@@ -244,7 +239,7 @@ public class OrgDAO {
 		ArrayList<OrgCallNumber> list = new ArrayList<OrgCallNumber>();
 
 		try {
-			pstmt=conn.prepareStatement("select * from orgcallnum where OrgNumber = ?");
+			pstmt=conn.prepareStatement("select * from orgcallnum where Org_Number = ?");
 			pstmt.setInt(1, num);
 			
 			rs = pstmt.executeQuery();

@@ -120,9 +120,7 @@ public class OrgServlet extends HttpServlet {
 				orgDAO.add_orgnum(Org_id, org_call2);
 			
 			request.setAttribute("Org_number",orgDAO.Count() );
-			
 			response.sendRedirect("orgselect.jsp");
-
 		}
 		
 		else if("수정".equals(button)) {
