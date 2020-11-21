@@ -150,14 +150,18 @@ public class CardAddServlet extends HttpServlet {
 			
 		}
 		else if(button.equals("회사 정보")) {
-			response.setCharacterEncoding("utf-8");
 			
+			
+			response.setCharacterEncoding("utf-8");
+			System.out.println(request.getParameter("org_number"));
+			System.out.println(request.getParameter("card_number"));
+			/*
 			int OrgN=Integer.parseInt(request.getParameter("org_num"));
 			System.out.println(OrgN);
 			Org org = new Org();
 			OrgDAO orgDAO=new OrgDAO();
-			
-			//org=orgDAO.getOrg(OrgN);
+			*/
+			/*org=orgDAO.getOrg(OrgN);
 			request.setAttribute("Name", org.getOrgName());
 			request.setAttribute("Address", org.getOrgAddress());
 			request.setAttribute("Zipcode", org.getOrgZipCode());
@@ -168,7 +172,7 @@ public class CardAddServlet extends HttpServlet {
 			ServletContext context=getServletContext();
 			RequestDispatcher dispatcher=context.getRequestDispatcher("/orginfo.jsp");
 			dispatcher.forward(request,response);
-
+*/
 		}
 	}
 }

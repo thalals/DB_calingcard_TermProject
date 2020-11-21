@@ -37,11 +37,12 @@
 		                    </div>
 	                    </td>
                     </tr>
-					<% 
+                    <% 
 						int count =0 ;
 						CardDAO cardDAO = new CardDAO();
 						ArrayList<Card> card_list = cardDAO.getCardlist(); 		
 					%>
+					
 					<tr>
 						<td>
 								<!-- EL 문법 -->
@@ -52,28 +53,28 @@
                             	<input type = "submit" name = "btn" value = "로그아웃" class="btn_logout">
                             </div>
                         </td>
-                    </tr>	
-					<tr>
-					<td colspan="2">
-						<%
-						for(Card a : card_list){
-							//pass.equals(rs.getString("password")
-							//String b = a.getUserID();
-							//session.setAttribute("id", a.getUserID());
-							//String c = (String)session.getAttribute("id");
-							//System.out.println(a.getUserID().getClass().getName());
-							//System.out.println(session.getAttribute("id").getClass().getName());
-							//if(a.getUserID() ==session.getAttribute("id")  ){
-								
-							if(a.getUserID().equals(session.getAttribute("id"))){
-	                    %>
+                    </tr>
+                    <tr>
+						<td colspan="2">
+							<%
+							for(Card a : card_list){
+								//pass.equals(rs.getString("password")
+								//String b = a.getUserID();
+								//session.setAttribute("id", a.getUserID());
+								//String c = (String)session.getAttribute("id");
+								//System.out.println(a.getUserID().getClass().getName());
+								//System.out.println(session.getAttribute("id").getClass().getName());
+								//if(a.getUserID() ==session.getAttribute("id")  ){
+									
+								if(a.getUserID().equals(session.getAttribute("id"))){
+		                    %>
 	                   
-	                    <table class="table_info">
-							<tr colspan="2">
-								<td>작성자  : <%=a.getUserID() %> | </td>
-                              	<td>카드번호  : <%=a.getCardNumber() %> | </td>
-                            </tr>
-                        </table>
+		                    <table class="table_info">
+								<tr colspan="2">
+									<td>작성자  : <%=a.getUserID() %> | </td>
+	                              	<td>카드번호  : <%=a.getCardNumber() %> | </td>
+	                            </tr>
+	                        </table>
                             <table class="card_table">
                             	<tr>
                             		<td class="card_s"></td>
@@ -90,8 +91,7 @@
                                 	<td>
                                 	<%int x=a.getOrgNumber(); %>
                                 	<input type="text" name="org_num" value=<%=x %>>
-                                	
-                                	<input type = "submit" class="" name = "btn" value = "회사 정보"></td>
+                                    </td>
                                 	<td></td>
                                     <td style="text-align:right;"><%=a.getTeam() %> | <%=a.getPosition() %></td>
                                 </tr>
@@ -113,8 +113,7 @@
                                 <tr>
                                 	<td style="width:200px;"><%=a.getSaveDate() %></td>
                                 	<td></td>
-                                	<td></td>
-								    
+                                	<td></td> 
 								</tr>
 							</table>
 							</td>
@@ -124,34 +123,33 @@
 								<div class="btn_pos">
  								<input type = "hidden" name = "card_number" value ='<%=a.getCardNumber() %>'>
  								<input type = "hidden" name = "org_number" value='<%=a.getOrgNumber() %>'>
+ 								<input type = "submit" class="" name = "btn" value = "회사 정보">
 								<input type = "submit" class="btn_remove" name = "btn" value = "삭제">
 								<input type = "submit" class="btn_update" name = "btn" value = "수정">
 								</div>
 							</td>
 						</tr>
-					
 						<%		}
 							else{
 								System.out.println("null값입니다.");
 							}
-						count++;
-						}
-					if(count==0){
-						%>
-						<tr><td colspan="7">저장한 명함이 없습니다.</td></tr>		
-					<%
-					}
-					%>	
+								count++;
+								}
+							if(count==0){
+								%>
+								<tr><td colspan="7">저장한 명함이 없습니다.</td></tr>		
+							<%
+							}
+							%>	
+					</table>
+						
 					</form>
-					<tr>
-						<td colspan="2">
-							<form action="org_info" method="POST" class="btn_card">
-								<input type ="hidden" name="user_id" value='${ id }' >
-								<input type="submit" class="create_card" name="btn" value="명함 생성">	
-							</form>	
-						</td>
-					</tr>
-				</table>
+					
+					<form action="org_info" method="POST" class="btn_card">
+						<input type ="hidden" name="user_id" value='${ id }' >
+						<input type="submit" class="create_card" name="btn" value="명함 생성">	
+					</form>	
+						
 			</div>
 		</div>
 	</div>
