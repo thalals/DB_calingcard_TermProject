@@ -81,13 +81,17 @@
                             		<td class="card_h"></td>
                             	</tr>
                                 <tr>
-                                	<td name="OrgN"><%=a.getOrgNumber() %></td>
+                                	<td><%=a.getOrgNumber() %></td>
                                 	<td></td>
                                     <td style="text-align:right;"><%= a.getName() %></td>
                                     
                                 </tr>
                                 <tr>
-                                	<td><input type = "submit" class="" name = "btn" value = "회사 정보"></td>
+                                	<td>
+                                	<%int x=a.getOrgNumber(); %>
+                                	<input type="text" name="org_num" value=<%=x %>>
+                                	
+                                	<input type = "submit" class="" name = "btn" value = "회사 정보"></td>
                                 	<td></td>
                                     <td style="text-align:right;"><%=a.getTeam() %> | <%=a.getPosition() %></td>
                                 </tr>
@@ -119,7 +123,7 @@
 							<td class="btn_position" colspan="2">
 								<div class="btn_pos">
  								<input type = "hidden" name = "card_number" value ='<%=a.getCardNumber() %>'>
- 								<input type="hidden" name="org_number" value='<%=a.getOrgNumber() %>'>
+ 								<input type = "hidden" name = "org_number" value='<%=a.getOrgNumber() %>'>
 								<input type = "submit" class="btn_remove" name = "btn" value = "삭제">
 								<input type = "submit" class="btn_update" name = "btn" value = "수정">
 								</div>

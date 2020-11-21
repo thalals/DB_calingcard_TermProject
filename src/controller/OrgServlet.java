@@ -63,7 +63,7 @@ public class OrgServlet extends HttpServlet {
 			
 			System.out.println("회사 개수 : " +orgDAO.Count());
 			request.setAttribute("Org_number",orgDAO.Count() );
-
+			
 			RequestDispatcher rd=request.getRequestDispatcher("/addOrgnumber.jsp");
 			rd.forward(request, response);
 			

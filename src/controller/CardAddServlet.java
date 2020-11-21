@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.CardDAO;
+import dao.OrgDAO;
 import vo.Card;
+import vo.Org;
 
 /**
  * Servlet implementation class CardAddServlet
@@ -148,21 +150,23 @@ public class CardAddServlet extends HttpServlet {
 			
 		}
 		else if(button.equals("회사 정보")) {
-			Card card = new Card();
-			CardDAO cardDAO = new CardDAO();
+			response.setCharacterEncoding("utf-8");
 			
-			int OrgN=Integer.parseInt(request.getParameter("OrgN"));
-			String id=request.getParameter("card_number");
+			int OrgN=Integer.parseInt(request.getParameter("org_num"));
+			System.out.println(OrgN);
+			Org org = new Org();
+			OrgDAO orgDAO=new OrgDAO();
 			
-			System.out.println("수정할 카드번호 : " + id);
-			 
+			//org=orgDAO.getOrg(OrgN);
+			request.setAttribute("Name", org.getOrgName());
+			request.setAttribute("Address", org.getOrgAddress());
+			request.setAttribute("Zipcode", org.getOrgZipCode());
+			request.setAttribute("Eamil", org.getOrgemail());
+			request.setAttribute("Fax", org.getOrgfax());
+			System.out.println(OrgN);
+			request.setAttribute("OrgN", OrgN);
 			ServletContext context=getServletContext();
-			RequestDispatcher dispatcher=context.getRequestDispatcher("/updateCard.jsp");
-			
-			System.out.println("수정수정");
-			request.setAttribute("card", card);
-			request.setAttribute("card_number", id);
-			
+			RequestDispatcher dispatcher=context.getRequestDispatcher("/orginfo.jsp");
 			dispatcher.forward(request,response);
 
 		}

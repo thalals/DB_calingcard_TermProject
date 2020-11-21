@@ -308,7 +308,41 @@ public class OrgDAO {
 		
 		return list;
 	}
-	
+	public static Org getOrg(int x) {
+		getOrg();
+		PreparedStatement pstmt=null;
+		Org org = new Org();
+		
+		try {
+			pstmt=conn.prepareStatement("SELECT * from organization WHERE Org_Number=?");
+			pstmt.setInt(1, x);
+			
+			
+			if(rs.next()) {
+				org.setOrg_Number(rs.getInt(1));
+				org.setOrgName(rs.getString(2));
+				org.setOrgAddress(rs.getNString(3));
+				org.setOrgZipCode(rs.getString(4));
+				org.setOrgfax(rs.getNString(5));
+				org.setOrgemail(rs.getNString(6));
+			}
+			rs=pstmt.executeQuery();
+			return org;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				rs.close();
+				pstmt.close();
+			
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return org;
+		
+	}
 	
 }
 	
