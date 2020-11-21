@@ -15,37 +15,49 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-	String Name=(String)request.getAttribute("Name");
-	String Address=(String)request.getAttribute("Address");
-	String Zipcode=(String)request.getAttribute("Zipcode");
-	String Email=(String)request.getAttribute("Email");
-	String Fax=(String)request.getAttribute("Fax");
+<% int x=Integer.parseInt(request.getParameter("num")); 
+	System.out.println(x);
 %>
+<%
+	Org org= new Org();
+	OrgDAO orgDAO = new OrgDAO();
+	String num=Integer.toString(x);
+	org=orgDAO.getOrgN(num);
+%>
+
 <table>
 <tr>
 <td>
-	<%=Name %>
+	<%=org.getOrgName() %>
 </td>
 </tr>
 <tr>
 <td>
-	<%=Address %>
+	<%=org.getOrgAddress() %>
 </td>
 </tr>
 <tr>
 <td>
-	<%=Zipcode %>
+	<%=org.getOrgZipCode() %>
 </td>
 </tr>
 <tr>
 <td>
-	<%=Email %>
+	<%=org.getOrgemail() %>
 </td>
 </tr>
 <tr>
 <td>
-	<%=Fax %>
+	<%=org.getOrgfax() %>
+</td>
+</tr>
+<%
+OrgCallNumber orgcallnumber=new OrgCallNumber();
+orgcallnumber=orgDAO.getOrgNumber(num);
+%>
+<tr>
+<td>
+	<%=orgcallnumber.getCallNumber() %>
 </td>
 </tr>
 </table>

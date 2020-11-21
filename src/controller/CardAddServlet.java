@@ -153,8 +153,9 @@ public class CardAddServlet extends HttpServlet {
 			
 			
 			response.setCharacterEncoding("utf-8");
-			System.out.println(request.getParameter("org_number"));
-			System.out.println(request.getParameter("card_number"));
+			
+			System.out.println((String)request.getParameter("org_number"));
+			System.out.println((String)request.getParameter("card_number"));
 			/*
 			int OrgN=Integer.parseInt(request.getParameter("org_num"));
 			System.out.println(OrgN);

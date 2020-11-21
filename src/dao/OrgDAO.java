@@ -308,26 +308,22 @@ public class OrgDAO {
 		
 		return list;
 	}
-	public static Org getOrg(int x) {
+	public static OrgCallNumber getOrgNumber(String n) {
 		getOrg();
 		PreparedStatement pstmt=null;
-		Org org = new Org();
+		OrgCallNumber orgcallnumber=new OrgCallNumber();
 		
 		try {
-			pstmt=conn.prepareStatement("SELECT * from organization WHERE Org_Number=?");
-			pstmt.setInt(1, x);
-			
+			pstmt=conn.prepareStatement("SELECT group_concat(CallNumber) from orgcallnum WHERE Org_Number=?");
+			pstmt.setString(1, n);
+			rs=pstmt.executeQuery();
 			
 			if(rs.next()) {
-				org.setOrg_Number(rs.getInt(1));
-				org.setOrgName(rs.getString(2));
-				org.setOrgAddress(rs.getNString(3));
-				org.setOrgZipCode(rs.getString(4));
-				org.setOrgfax(rs.getNString(5));
-				org.setOrgemail(rs.getNString(6));
+				orgcallnumber.setCallNumber(rs.getNString(1));
+				orgcallnumber.setOrgNumber(rs.getInt(2));
 			}
-			rs=pstmt.executeQuery();
-			return org;
+			
+			return orgcallnumber;
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -340,7 +336,7 @@ public class OrgDAO {
 				e.printStackTrace();
 			}
 		}
-		return org;
+		return orgcallnumber;
 		
 	}
 	

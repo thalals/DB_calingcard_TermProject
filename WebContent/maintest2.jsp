@@ -123,7 +123,7 @@
 								<div class="btn_pos">
  								<input type = "hidden" name = "card_number" value ='<%=a.getCardNumber() %>'>
  								<input type = "hidden" name = "org_number" value='<%=a.getOrgNumber() %>'>
- 								<input type = "submit" class="" name = "btn" value = "회사 정보">
+ 								<a href='orginfo.jsp?num=<%= a.getOrgNumber() %>'>회사 정보</a>
 								<input type = "submit" class="btn_remove" name = "btn" value = "삭제">
 								<input type = "submit" class="btn_update" name = "btn" value = "수정">
 								</div>
