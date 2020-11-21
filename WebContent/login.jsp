@@ -11,7 +11,7 @@
 <title>login 페이지</title>
 </head>
 <body>
-	<form method="post" action="login">
+	<form method="post" action="login" class="login_form">
             <div class = "box_login">
                 <section class="login">
                     <h2>로그인</h2>
@@ -22,8 +22,9 @@
                 <div class = "input_text">
                     <input type="password" id="UserPW" name="UserPW" placeholder="Password">
                 </div>
+                <center>
                 <input type="submit" class="btn_login" value="로그인">
-                
+                </center>
             </div>
         </form>
 </body>

@@ -13,7 +13,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width", initial-scale="1">
-<link rel="stylesheet" href="css/updatecard.css">
+<link rel="stylesheet" href="css/create.css">
 <link rel="stylesheet" href="css/default2.css">
 <title>회사 수정</title>
 </head>
@@ -28,7 +28,7 @@
     </td>
     <td class="create_card_right">
         <div class = "input_text">
-            <input type="text" id="OrgName" name="upOrgName" placeholder="name"  value = "<%=org.getOrgName()%>">
+            <input class="text2" type="text" id="OrgName" name="upOrgName" placeholder="name"  value = "<%=org.getOrgName()%>">
         </div>
     </td>
     </tr>
@@ -38,7 +38,7 @@
     </td>
     <td class="create_card_right">    
         <div class = "input_text">
-            <input type="text" id="OrgAddress" name="upOrgAddress" placeholder="address" value = "<%=org.getOrgAddress()%>">
+            <input class="text2" type="text" id="OrgAddress" name="upOrgAddress" placeholder="address" value = "<%=org.getOrgAddress()%>">
         </div>
     </td>
     </tr>
@@ -48,7 +48,7 @@
     </td>
     <td class="create_card_right">   
         <div class = "input_text">
-            <input type="text" id="OrgZipCode" name="upOrgZipCode" placeholder="zipcode" value = "<%=org.getOrgZipCode()%>">
+            <input class="text2" type="text" id="OrgZipCode" name="upOrgZipCode" placeholder="zipcode" value = "<%=org.getOrgZipCode()%>">
         </div>
     </td>
     </tr>
@@ -58,7 +58,7 @@
     </td>
     <td class="create_card_right"> 
         <div class = "input_text">
-            <input type="text" id="Orgemail" name="upOrgemail" placeholder="email" value = "<%=org.getOrgemail()%>">
+            <input class="text2" type="text" id="Orgemail" name="upOrgemail" placeholder="email" value = "<%=org.getOrgemail()%>">
         </div>
     </td>
     </tr>
@@ -68,7 +68,7 @@
     </td>
     <td class="create_card_right"> 
         <div class = "input_text">
-            <input type="text" id="Orgfax" name="upOrgfax" placeholder="fax" value = "<%=org.getOrgfax()%>">
+            <input class="text2" type="text" id="Orgfax" name="upOrgfax" placeholder="fax" value = "<%=org.getOrgfax()%>">
         </div>
     </td>
     </tr>

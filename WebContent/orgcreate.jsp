@@ -22,7 +22,7 @@
     </td>
     <td class="create_card_right">
         <div class = "input_text">
-            <input type="text" id="OrgName" name="OrgName" placeholder="name">
+            <input class="text2" type="text" id="OrgName" name="OrgName" placeholder="name">
         </div>
     </td>
     </tr>
@@ -32,7 +32,7 @@
     </td>
     <td class="create_card_right">    
         <div class = "input_text">
-            <input type="text" id="OrgAddress" name="OrgAddress" placeholder="address">
+            <input class="text2" type="text" id="OrgAddress" name="OrgAddress" placeholder="address">
         </div>
     </td>
     </tr>
@@ -42,7 +42,7 @@
     </td>
     <td class="create_card_right">   
         <div class = "input_text">
-            <input type="text" id="OrgZipCode" name="OrgZipCode" placeholder="zipcode">
+            <input class="text2" type="text" id="OrgZipCode" name="OrgZipCode" placeholder="zipcode">
         </div>
     </td>
     </tr>
@@ -52,7 +52,7 @@
     </td>
     <td class="create_card_right"> 
         <div class = "input_text">
-            <input type="text" id="Orgemail" name="Orgemail" placeholder="email">
+            <input class="text2" type="text" id="Orgemail" name="Orgemail" placeholder="email">
         </div>
     </td>
     </tr>
@@ -62,7 +62,7 @@
     </td>
     <td class="create_card_right"> 
         <div class = "input_text">
-            <input type="text" id="Orgfax" name="Orgfax" placeholder="fax">
+            <input class="text2" type="text" id="Orgfax" name="Orgfax" placeholder="fax">
         </div>
     </td>
     </tr>

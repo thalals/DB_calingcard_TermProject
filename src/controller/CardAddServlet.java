@@ -147,5 +147,24 @@ public class CardAddServlet extends HttpServlet {
 			
 			
 		}
+		else if(button.equals("회사 정보")) {
+			Card card = new Card();
+			CardDAO cardDAO = new CardDAO();
+			
+			int OrgN=Integer.parseInt(request.getParameter("OrgN"));
+			String id=request.getParameter("card_number");
+			
+			System.out.println("수정할 카드번호 : " + id);
+			 
+			ServletContext context=getServletContext();
+			RequestDispatcher dispatcher=context.getRequestDispatcher("/updateCard.jsp");
+			
+			System.out.println("수정수정");
+			request.setAttribute("card", card);
+			request.setAttribute("card_number", id);
+			
+			dispatcher.forward(request,response);
+
+		}
 	}
 }

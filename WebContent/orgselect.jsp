@@ -43,7 +43,7 @@ form{display:inline-block;}
 						
 				%>
 				<div>
-				<div>
+				<div class="radio_text">
 					<input type="radio" name="choice" value="<%=a.getOrg_Number() %>"><%=a.getOrgName() %></option>
 					| (주소) : <%=a.getOrgAddress() %> | (우편번호) : <%=a.getOrgZipCode() %> |<!--  (email) : <%=a.getOrgfax() %> | (fax) : <%=a.getOrgemail() %> | -->
 					<hr>

@@ -1,7 +1,7 @@
 .jumbotron{
 	background-color: white;
 	border-style: outset;
-	border-radius: 20px 20px 20px 20px;
+	width:700px;
 }
 .mainboard{
     display: flex;
@@ -9,8 +9,7 @@
     justify-content: center;
 }
 .page_name > h3{
-	display: flex;
-	flex-direction: column;
+	
 	padding:0 0 20px;
     border-bottom: 2px solid #111; 
     text-align: center; 
@@ -21,7 +20,8 @@
 }
 
 form.main_form{
-	
+	display: flex;
+	flex-direction: column;
 }
 
 .main_table{
@@ -105,4 +105,122 @@ form.main_form{
 	margin-top:5px;
 	margin-bottom:3px;
 	border-radius: 10px 10px 10px 10px;
+}
+.btn_pos{
+	display:flex;
+	flex-direction:row;
+}
+@media (max-width:500px){
+	.jumbotron{
+	width:400px;
+	background-color: white;
+	border-style: outset;
+	border-radius: 20px 20px 20px 20px;
+}
+.mainboard{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.page_name > h3{
+	display: flex;
+	flex-direction: column;
+	padding:0 0 20px;
+    border-bottom: 2px solid #111; 
+    text-align: center; 
+    line-height: 1; 
+    font-size: 24px; 
+    color: #111;
+    text-shadow: 1px 1px 1px gray;
+}
+
+form.main_form{
+	
+}
+
+.main_table{
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.page_name{
+    text-align:center;
+}
+.btn_logou{
+	display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.btn_logout{
+	box-sizing: border-box;
+	color: white;
+	background-color:black;
+	border-radius:10px 10px 10px 10px;
+}
+.table_info{
+	width:300px;
+}
+
+.card_table{
+	width:100%;
+    background-color: white;
+    border-style: outset;
+}
+.card_s{
+	width: 33%;
+	height: 20px;
+	background-color:#58FA58;
+}
+.card_c{
+	width: 33%;
+	height: 20px;
+	background-color:#0B3B39;
+}
+.card_h{
+	width: 33%;
+	height: 20px;
+	background-color:#81F7F3;
+}
+.user_name{
+	width:30%;
+}
+.user_logout{
+	widht:70%;	
+	align:right;
+}
+
+.btn_position{
+	width: 100%;
+	display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.btn_remove{
+	margin-left:10px;
+	margin-right: 10px;
+	margin-top:10px;
+}
+
+.btn_update{
+	margin-left:10px;
+	margin-right: 10px;
+	margin-top:10px;
+}
+
+.btn_card{
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.create_card{
+	width:80%;
+	height: 40px;
+	box-sizing:border-box;
+	color:white;
+	background-color:black;
+	margin-top:5px;
+	margin-bottom:3px;
+	border-radius: 10px 10px 10px 10px;
+}
+	
 }
