@@ -67,7 +67,7 @@
 				<tr>
 					<td colspan="2">
 						
-						<input type="hidden" name ="id" value =<%=org.getOrg_Number()%> >
+						<input type="hidden" name ="id" value =<%=org.getOrg_Number()+1%> >
 						<input type="submit" name ="btn" value ="회사 전화 번호 추가">
 					</td>
 				</tr>

@@ -33,7 +33,7 @@ public class CardAddServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request,response);
 	}
 
 	
@@ -149,31 +149,6 @@ public class CardAddServlet extends HttpServlet {
 			
 			
 		}
-		else if(button.equals("회사 정보")) {
-			
-			
-			response.setCharacterEncoding("utf-8");
-			
-			System.out.println((String)request.getParameter("org_number"));
-			System.out.println((String)request.getParameter("card_number"));
-			/*
-			int OrgN=Integer.parseInt(request.getParameter("org_num"));
-			System.out.println(OrgN);
-			Org org = new Org();
-			OrgDAO orgDAO=new OrgDAO();
-			*/
-			/*org=orgDAO.getOrg(OrgN);
-			request.setAttribute("Name", org.getOrgName());
-			request.setAttribute("Address", org.getOrgAddress());
-			request.setAttribute("Zipcode", org.getOrgZipCode());
-			request.setAttribute("Eamil", org.getOrgemail());
-			request.setAttribute("Fax", org.getOrgfax());
-			System.out.println(OrgN);
-			request.setAttribute("OrgN", OrgN);
-			ServletContext context=getServletContext();
-			RequestDispatcher dispatcher=context.getRequestDispatcher("/orginfo.jsp");
-			dispatcher.forward(request,response);
-*/
-		}
+		
 	}
 }

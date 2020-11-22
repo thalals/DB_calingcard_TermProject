@@ -54,7 +54,7 @@
     </tr>
     <tr>
     <td class="create_card_left">   
-        <p> 단체 이메일 </p>
+        <p> 단체 팩스번호 </p>
     </td>
     <td class="create_card_right"> 
         <div class = "input_text">
@@ -64,7 +64,7 @@
     </tr>
     <tr>
     <td class="create_card_left">  
-        <p> 단체 팩스번호 </p>
+        <p> 단체 이메일 </p>
     </td>
     <td class="create_card_right"> 
         <div class = "input_text">

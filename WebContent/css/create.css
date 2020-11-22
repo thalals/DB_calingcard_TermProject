@@ -32,6 +32,15 @@ td.create_card_left{
 	border-top: 3px solid gray;
 	border-left: 3px solid gray;
 }
+td.create_card_left2{
+	width:30%;
+	height: 30px;
+	font-weight:bold;
+	margin-top: 10px;
+	margin-bottom:10px;
+	border-top: 3px solid gray;
+	border-left: 3px solid gray;
+}
 td.create_card_right{
 	width:70%;
 	border-top: 3px solid gray;
@@ -91,6 +100,12 @@ td.create_card_right2{
     font-size:16px;
     background-color: black;
     color: white;
+}
+.input_num{
+	width: 90%;
+    height: 36px;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 1px gray;
 }
 .update_org{
 	width: 90%;

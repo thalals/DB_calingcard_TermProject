@@ -121,10 +121,13 @@
 							</table>
 							</td>
 						</tr>
+						<% String cardN=Integer.toString(a.getCardNumber()); 
+						%>
 						<tr>
 							<td class="btn_position" colspan="2">
 								<div class="btn_pos">
- 								<input type = "hidden" name = "card_number" value ='<%=a.getCardNumber() %>'>
+								<a href="updateCard.jsp?num=<%=a.getCardNumber() %>"></a>
+ 								<input type = "hidden" name = "card_number" value = '<%=a.getCardNumber() %>'>
  								<input type = "hidden" name = "org_number" value='<%=a.getOrgNumber() %>'>
  								<a href='orginfo.jsp?num=<%= a.getOrgNumber() %>'>회사 정보</a>
 								<input type = "submit" class="btn_remove" name = "btn" value = "삭제">

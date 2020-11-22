@@ -15,6 +15,10 @@
     
 <html>
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width", initial-scale="1">
+<link rel="stylesheet" href="css/create.css">
+<link rel="stylesheet" href="css/default2.css">
 <style>
 	table{
 		margin : auto;
@@ -52,13 +56,13 @@
 				
 				<% if(call.size()==2) {%>
 					<tr>
-						<td><label for = "number">전화번호1 : </label></td>
-						<td><input type="text" name="upnumber1" default=" " placeholder="call number" value="<%=call.get(0).getCallNumber() %>"/></td>
+						<td class="create_card_left2"><label for = "number">전화번호1 : </label></td>
+						<td class="create_card_right2"><input class="input_num" type="text" name="upnumber1" default=" " placeholder="call number" value="<%=call.get(0).getCallNumber() %>"/></td>
 					</tr>
 					
 					<tr>
-						<td><label for = "number">전화번호2 : </label></td>
-						<td><input type="text" name="upnumber2" default=" " placeholder="call number" value="<%=call.get(1).getCallNumber() %>" /></td>
+						<td class="create_card_left2"><label for = "number">전화번호2 : </label></td>
+						<td class="create_card_right2"><input class="input_num" type="text" name="upnumber2" default=" " placeholder="call number" value="<%=call.get(1).getCallNumber() %>" /></td>
 					</tr>
 					
 					<tr>
@@ -74,13 +78,13 @@
 				
 				else if(call.size()==1) {%>
 					<tr>
-						<td><label for = "number">전화번호1 : </label></td>
-						<td><input type="text" name="upnumber1" default=" " placeholder="call number" value="<%=call.get(0).getCallNumber() %>"/></td>
+						<td class="create_card_left2"><label for = "number">전화번호1 : </label></td>
+						<td class="create_card_right2"><input class="input_num" type="text" name="upnumber1" default=" " placeholder="call number" value="<%=call.get(0).getCallNumber() %>"/></td>
 					</tr>
 					
 					<tr>
-						<td><label for = "number">전화번호2 : </label></td>
-						<td><input type="text" name="upnumber2" default=" " placeholder="call number"  /></td>
+						<td class="create_card_left2"><label for = "number">전화번호2 : </label></td>
+						<td class="create_card_right2"><input class="input_num" type="text" name="upnumber2" default=" " placeholder="call number"  /></td>
 					</tr>
 					
 					<tr>
@@ -95,20 +99,20 @@
 				
 				else {%>
 					<tr>
-						<td><label for = "number">전화번호1 : </label></td>
-						<td><input type="text" name="upnumber1" default=" " placeholder="call number" /></td>
+						<td class="create_card_left2"><label for = "number">전화번호1 : </label></td>
+						<td class="create_card_right2"><input class="input_num" type="text" name="upnumber1" default=" " placeholder="call number" /></td>
 					</tr>
 					
 					<tr>
-						<td><label for = "number">전화번호2 : </label></td>
-						<td><input type="text" name="upnumber2" default=" " placeholder="call number"  /></td>
+						<td class="create_card_left2"><label for = "number">전화번호2 : </label></td>
+						<td class="create_card_right2"><input class="input_num" type="text" name="upnumber2" default=" " placeholder="call number"  /></td>
 					</tr>
 					
 					<tr>
 					<td colspan="2">
 						<input type="hidden" name ="number1"  >
 						<input type="hidden" name ="number2"  >
-						<input type="hidden" name ="upid" value =<%=org.getOrg_Number()%> >
+						<input type="hidden" name ="upid" value =<%=org.getOrg_Number()+1%> >
 						<input type="submit" name ="btn" value ="회사 전화 번호 수정">
 					</td>
 				</tr>

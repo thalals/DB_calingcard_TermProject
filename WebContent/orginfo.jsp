@@ -56,7 +56,7 @@
 </tr>
 <tr>
 <td class="create_card_left">
-	소속단체 이메일 :
+	소속단체 팩스 :
 </td>
 <td class="create_card_right2">
 	<%=org.getOrgemail() %>
@@ -64,7 +64,7 @@
 </tr>
 <tr>
 <td class="create_card_left">
-	소속단체 팩스 :
+	소속단체 이메일 :
 </td>
 <td class="create_card_right2">
 	<%=org.getOrgfax() %>
