@@ -21,7 +21,7 @@
 <!-- 부트스트랩 사용하기 위해 링크 -->
 
 
-<title>login 페이지</title>
+<title>검색 결과</title>
 </head>
 <body>
 	<div class="mainboard" >
@@ -40,7 +40,11 @@
                     <% 
 						int count =0 ;
 						CardDAO cardDAO = new CardDAO();
-						ArrayList<Card> card_list = cardDAO.getCardlist(); 		
+						String key = (String)request.getAttribute("keyword");
+
+						String sub = (String)request.getAttribute("subject");
+						System.out.println("확인 :"+key+sub);
+						ArrayList<Card> card_list = cardDAO.getSearchinglist(key,sub); 		
 					%>
 					
 					<tr>
@@ -157,7 +161,7 @@
 								}
 							if(count==0){
 								%>
-								<tr><td colspan="7">저장한 명함이 없습니다.</td></tr>		
+								<tr><td colspan="7">검색 결과가 없습니다.</td></tr>		
 							<%
 							}
 							%>	

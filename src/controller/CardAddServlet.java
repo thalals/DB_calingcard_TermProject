@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -108,7 +109,22 @@ public class CardAddServlet extends HttpServlet {
 				out.println("</script>");
 			}
 		}
+		else if(button.equals("검색")) {
+			String keyword = (String)request.getParameter("search");
+			
+			String subject = (String)request.getParameter("subject");
 		
+			
+			request.setAttribute("keyword", keyword);
+			request.setAttribute("subject", subject);
+			
+//			response.sendRedirect("search_result.jsp");
+			
+			ServletContext context=getServletContext();
+			RequestDispatcher dispatcher=context.getRequestDispatcher("/search_result.jsp");
+			
+			dispatcher.forward(request, response);
+		}
 		else if(button.equals("카드추가")) {
 			Card card = new Card();
 			CardDAO cardDAO = new CardDAO();

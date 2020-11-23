@@ -74,6 +74,129 @@ public class CardDAO {
 		
 		return card;
 	}
+	
+	//검색된 카드 리스트 가져오기
+	public static ArrayList<Card> getSearchinglist(String key, String subject) {
+		getCard();
+		PreparedStatement pstmt=null;
+		ArrayList<Card> list = new ArrayList<Card>();
+		
+		try {
+			if(key.equals("Name")) {
+				String sql = "select * from card where Name like ?";
+				pstmt=conn.prepareStatement(sql);
+				
+				pstmt.setNString(1, "%"+key+"%");
+				
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					Card card = new Card();
+	
+					card.setCardNumber(rs.getInt(1));
+					card.setUserID(rs.getString(2));
+					card.setOrgNumber(rs.getInt(3));
+					card.setName(rs.getString(4));
+					card.setPhoneNumber(rs.getString(5));
+					card.setTeam(rs.getString(6));
+					card.setPosition(rs.getString(7));
+					card.setEmail(rs.getString(8));
+					card.setCareer(rs.getString(9));
+					card.setSaveDate(rs.getString(10));
+					list.add(card);
+				}
+			}
+			
+			else if(key.equals("Team")) {
+				String sql = "select * from card where Team like ?";
+				pstmt=conn.prepareStatement(sql);
+				
+				pstmt.setNString(1, "%"+key+"%");
+				
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					Card card = new Card();
+	
+					card.setCardNumber(rs.getInt(1));
+					card.setUserID(rs.getString(2));
+					card.setOrgNumber(rs.getInt(3));
+					card.setName(rs.getString(4));
+					card.setPhoneNumber(rs.getString(5));
+					card.setTeam(rs.getString(6));
+					card.setPosition(rs.getString(7));
+					card.setEmail(rs.getString(8));
+					card.setCareer(rs.getString(9));
+					card.setSaveDate(rs.getString(10));
+					list.add(card);
+				}
+			}
+				else if(key.equals("PhoneNumber")) {
+					String sql = "select * from card where PhoneNumber like ?";
+					pstmt=conn.prepareStatement(sql);
+					
+					pstmt.setNString(1, "%"+key+"%");
+					
+					rs = pstmt.executeQuery();
+					
+					while(rs.next()) {
+						Card card = new Card();
+		
+						card.setCardNumber(rs.getInt(1));
+						card.setUserID(rs.getString(2));
+						card.setOrgNumber(rs.getInt(3));
+						card.setName(rs.getString(4));
+						card.setPhoneNumber(rs.getString(5));
+						card.setTeam(rs.getString(6));
+						card.setPosition(rs.getString(7));
+						card.setEmail(rs.getString(8));
+						card.setCareer(rs.getString(9));
+						card.setSaveDate(rs.getString(10));
+						list.add(card);
+					}
+				}
+				
+				else if(key.equals("Email")) {
+					String sql = "select * from card where Email like ?";
+					pstmt=conn.prepareStatement(sql);
+					
+					pstmt.setNString(1, "%"+key+"%");
+					
+					rs = pstmt.executeQuery();
+					
+					while(rs.next()) {
+						Card card = new Card();
+		
+						card.setCardNumber(rs.getInt(1));
+						card.setUserID(rs.getString(2));
+						card.setOrgNumber(rs.getInt(3));
+						card.setName(rs.getString(4));
+						card.setPhoneNumber(rs.getString(5));
+						card.setTeam(rs.getString(6));
+						card.setPosition(rs.getString(7));
+						card.setEmail(rs.getString(8));
+						card.setCareer(rs.getString(9));
+						card.setSaveDate(rs.getString(10));
+						list.add(card);
+					}
+				}
+		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return list;
+	}
+	
 	//카드 리스트 가져오기
 	public static ArrayList<Card> getCardlist() {
 		getCard();

@@ -87,6 +87,7 @@ public class OrgDAO {
 		}
 		finally {
 			try {
+				rs.close();
 				pstmt.close();
 				conn.close();
 			}catch(Exception e) {
