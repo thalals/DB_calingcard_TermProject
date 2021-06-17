@@ -77,14 +77,6 @@
 						<td colspan="2">
 							<%
 							for(Card a : card_list){
-								//pass.equals(rs.getString("password")
-								//String b = a.getUserID();
-								//session.setAttribute("id", a.getUserID());
-								//String c = (String)session.getAttribute("id");
-								//System.out.println(a.getUserID().getClass().getName());
-								//System.out.println(session.getAttribute("id").getClass().getName());
-								//if(a.getUserID() ==session.getAttribute("id")  ){
-									
 								if(a.getUserID().equals(session.getAttribute("id"))){
 		                    %>
 	                   
