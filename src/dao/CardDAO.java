@@ -82,7 +82,8 @@ public class CardDAO {
 		ArrayList<Card> list = new ArrayList<Card>();
 		
 		try {
-			if(key.equals("Name")) {
+			if(subject.equals("Name")) {
+				System.out.println("이름 카테고리 검색");
 				String sql = "select * from card where Name like ?";
 				pstmt=conn.prepareStatement(sql);
 				
@@ -107,7 +108,7 @@ public class CardDAO {
 				}
 			}
 			
-			else if(key.equals("Team")) {
+			else if(subject.equals("Team")) {
 				String sql = "select * from card where Team like ?";
 				pstmt=conn.prepareStatement(sql);
 				
@@ -131,7 +132,7 @@ public class CardDAO {
 					list.add(card);
 				}
 			}
-				else if(key.equals("PhoneNumber")) {
+				else if(subject.equals("PhoneNumber")) {
 					String sql = "select * from card where PhoneNumber like ?";
 					pstmt=conn.prepareStatement(sql);
 					
@@ -156,7 +157,7 @@ public class CardDAO {
 					}
 				}
 				
-				else if(key.equals("Email")) {
+				else if(subject.equals("Email")) {
 					String sql = "select * from card where Email like ?";
 					pstmt=conn.prepareStatement(sql);
 					
